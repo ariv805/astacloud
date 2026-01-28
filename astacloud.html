@@ -1,0 +1,2494 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTA CLOUD - Marketplace Terpercaya</title>
+    
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --primary-blue: #1a5fb4;
+            --light-blue: #62a0ea;
+            --dark-blue: #0f3b7a;
+            --white: #ffffff;
+            --light-gray: #f0f0f0;
+            --medium-gray: #d0d0d0;
+            --dark-gray: #505050;
+            --black: #1a1a1a;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --gradient: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            --gradient-reverse: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 100%);
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --navbar-bg: rgba(255, 255, 255, 0.9);
+            --footer-bg: #1a1a1a;
+            --text-color: #1a1a1a;
+            --text-secondary: #666666;
+            --border-color: #e5e7eb;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --navbar-bg: rgba(30, 30, 30, 0.9);
+            --footer-bg: #0a0a0a;
+            --text-color: #f0f0f0;
+            --text-secondary: #b0b0b0;
+            --border-color: #333333;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--light-gray) 100%);
+            color: var(--text-dark);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, var(--bg-color) 0%, #1a1a1a 100%);
+            color: var(--text-color);
+        }
+
+        /* Custom styles for gradient text */
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom styles for navbar */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: var(--navbar-bg);
+            transition: all 0.3s ease;
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Custom styles for swiper */
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 0 auto;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        [data-theme="dark"] ::-webkit-scrollbar-track {
+            background: #333;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--dark-blue);
+        }
+
+        /* Custom animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Loading animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        [data-theme="dark"] .loader {
+            background: var(--bg-color);
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-gray);
+            border-top: 5px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: var(--shadow);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Mobile menu animation */
+        .menu-toggle span {
+            transition: 0.3s;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Admin Dashboard Styles */
+        .admin-dashboard {
+            display: none;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        [data-theme="dark"] .admin-dashboard {
+            background-color: #121212;
+        }
+
+        .admin-dashboard.active {
+            display: block;
+        }
+
+        .admin-sidebar {
+            background-color: var(--dark-blue);
+            color: white;
+            min-height: 100vh;
+            width: 250px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .admin-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .admin-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .admin-form input, .admin-form textarea, .admin-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .admin-form button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .admin-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .admin-table th {
+            background-color: var(--light-blue);
+            color: white;
+        }
+
+        .admin-table tr:hover {
+            background-color: var(--light-gray);
+        }
+
+        [data-theme="dark"] .admin-table tr:hover {
+            background-color: #2a2a2a;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .edit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .edit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: var(--gradient);
+        }
+
+        .login-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-hover);
+            width: 100%;
+            max-width: 400px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        [data-theme="dark"] .close-modal:hover {
+            color: #ccc;
+        }
+
+        /* Discount Badge */
+        .discount-badge {
+            background-color: #e74c3c;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+
+        .discount-price {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Card styles for dark mode */
+        [data-theme="dark"] .bg-white {
+            background-color: var(--card-bg) !important;
+        }
+
+        [data-theme="dark"] .text-gray-700 {
+            color: var(--text-color) !important;
+        }
+
+        [data-theme="dark"] .text-gray-600 {
+            color: var(--text-secondary) !important;
+        }
+
+        [data-theme="dark"] .text-blue-600 {
+            color: #62a0ea !important;
+        }
+
+        [data-theme="dark"] .border-gray-300 {
+            border-color: var(--border-color) !important;
+        }
+
+        [data-theme="dark"] .bg-gray-50 {
+            background-color: #1a1a1a !important;
+        }
+
+        [data-theme="dark"] .bg-blue-50 {
+            background-color: #1a3a52 !important;
+        }
+
+        [data-theme="dark"] .bg-green-50 {
+            background-color: #1a3a2a !important;
+        }
+
+        [data-theme="dark"] .bg-purple-50 {
+            background-color: #3a1a52 !important;
+        }
+
+        [data-theme="dark"] .bg-orange-50 {
+            background-color: #3a2a1a !important;
+        }
+
+        [data-theme="dark"] .shadow-lg {
+            box-shadow: var(--shadow) !important;
+        }
+
+        [data-theme="dark"] .shadow-xl {
+            box-shadow: var(--shadow-hover) !important;
+        }
+
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .admin-sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .admin-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Main Website -->
+    <div id="mainWebsite">
+        <!-- Navbar -->
+        <nav class="navbar fixed top-0 w-full z-50 shadow-md transition-all duration-300" id="navbar">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-3 cursor-pointer" onclick="showPage('home')">
+                    <img src="https://files.catbox.moe/ew2x0g.jpg" alt="Logo" class="w-10 h-10 rounded-full object-cover border-2 border-blue-600">
+                    <span class="text-xl font-bold gradient-text">ASTA CLOUD</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <!-- Theme Toggle Button -->
+                    <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                        <i data-lucide="sun" class="w-5 h-5" id="themeIcon"></i>
+                    </div>
+                    <div class="menu-toggle md:hidden flex flex-col cursor-pointer" id="menuToggle">
+                        <span class="w-6 h-0.5 bg-blue-600 my-1 rounded"></span>
+                        <span class="w-6 h-0.5 bg-blue-600 my-1 rounded"></span>
+                        <span class="w-6 h-0.5 bg-blue-600 my-1 rounded"></span>
+                    </div>
+                </div>
+                <ul class="hidden md:flex gap-6" id="navMenu">
+                    <li><a href="#" onclick="showPage('home')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="home" class="w-4 h-4"></i> Beranda</a></li>
+                    <li><a href="#" onclick="showPage('services')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="bell" class="w-4 h-4"></i> Layanan</a></li>
+                    <li><a href="#" onclick="showPage('products')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Produk</a></li>
+                    <li><a href="#" onclick="showPage('domain')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="globe" class="w-4 h-4"></i> Domain</a></li>
+                    <li><a href="#" onclick="showPage('testimonials')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="message-circle" class="w-4 h-4"></i> Testimoni</a></li>
+                    <li><a href="#" onclick="showLogin()" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="settings" class="w-4 h-4"></i> Login</a></li>
+                </ul>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="hidden md:hidden bg-white shadow-lg" id="mobileMenu">
+                <ul class="py-4 px-4 space-y-3">
+                    <li><a href="#" onclick="showPage('home')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="home" class="w-4 h-4"></i> Beranda</a></li>
+                    <li><a href="#" onclick="showPage('services')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="bell" class="w-4 h-4"></i> Layanan</a></li>
+                    <li><a href="#" onclick="showPage('products')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Produk</a></li>
+                    <li><a href="#" onclick="showPage('domain')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="globe" class="w-4 h-4"></i> Domain</a></li>
+                    <li><a href="#" onclick="showPage('testimonials')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="message-circle" class="w-4 h-4"></i> Testimoni</a></li>
+                    <li><a href="#" onclick="showLogin()" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="settings" class="w-4 h-4"></i> Login</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="pt-20 min-h-screen">
+            <!-- Home Page -->
+            <section id="home" class="page active">
+                <!-- Hero Section with Slider -->
+                <div class="swiper mySwiper h-96 md:h-[500px]">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide bg-gradient-to-r from-blue-500 to-blue-300 text-white flex flex-col justify-center items-center text-center p-8">
+                            <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-up">Selamat Datang di ASTA CLOUD</h1>
+                            <p class="text-lg md:text-xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="100">Solusi lengkap untuk kebutuhan digital dan teknologi Anda</p>
+                            <a href="#services" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors" data-aos="fade-up" data-aos-delay="200" onclick="showPage('services')">Jelajahi Layanan</a>
+                        </div>
+                        <div class="swiper-slide bg-gradient-to-r from-purple-500 to-pink-500 text-white flex flex-col justify-center items-center text-center p-8">
+                            <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-up">Produk Berkualitas</h1>
+                            <p class="text-lg md:text-xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="100">Peralatan komputer dan aksesoris dengan kualitas terbaik</p>
+                            <a href="#products" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-purple-50 transition-colors" data-aos="fade-up" data-aos-delay="200" onclick="showPage('products')">Lihat Produk</a>
+                        </div>
+                        <div class="swiper-slide bg-gradient-to-r from-green-500 to-teal-500 text-white flex flex-col justify-center items-center text-center p-8">
+                            <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-up">Layanan Profesional</h1>
+                            <p class="text-lg md:text-xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="100">Desain, editing video, dan perbaikan device</p>
+                            <a href="#services" class="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition-colors" data-aos="fade-up" data-aos-delay="200" onclick="showPage('services')">Pesan Sekarang</a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+
+                <!-- Features Section -->
+                <div class="container mx-auto px-4 py-16">
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Mengapa Memilih Kami</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" data-aos="fade-up" data-aos-delay="100" onclick="showPage('services')">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-300 rounded-full flex items-center justify-center mb-6 mx-auto">
+                                <i data-lucide="bell" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4 text-center">Layanan Profesional</h3>
+                            <p class="text-gray-600 text-center">Berbagai layanan profesional untuk desain, editing video, dan perbaikan device</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" data-aos="fade-up" data-aos-delay="200" onclick="showPage('products')">
+                            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 mx-auto">
+                                <i data-lucide="laptop" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4 text-center">Produk Berkualitas</h3>
+                            <p class="text-gray-600 text-center">Peralatan komputer dan aksesoris dengan kualitas terbaik</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" data-aos="fade-up" data-aos-delay="300" onclick="showPage('domain')">
+                            <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto">
+                                <i data-lucide="globe" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4 text-center">Domain & Hosting</h3>
+                            <p class="text-gray-600 text-center">Solusi domain dan hosting untuk kebutuhan website Anda</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+         <!-- Services Page -->
+            <section id="services" class="page hidden">
+                <div class="container mx-auto px-4 py-16">
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Layanan Kami</h2>
+                    <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Services will be dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Page -->
+            <section id="products" class="page hidden">
+                <div class="container mx-auto px-4 py-16">
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Produk Kami</h2>
+                    <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Products will be dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Domain Page -->
+            <section id="domain" class="page hidden">
+                <div class="container mx-auto px-4 py-16">
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Domain & Hosting</h2>
+                    <div id="domainGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Domains will be dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Page -->
+            <section id="testimonials" class="page hidden">
+                <div class="container mx-auto px-4 py-16">
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Testimoni Pelanggan</h2>
+                    <div class="swiper testimonialSwiper">
+                        <div id="testimonialsContainer" class="swiper-wrapper">
+                            <!-- Testimonials will be dynamically loaded here -->
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-8">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p>&copy; 2026 ASTA CLOUD. All rights reserved.</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <!-- WhatsApp Icon -->
+                        <a href="https://wa.me/6285815185245" target="_blank" class="social-icon" title="WhatsApp">
+                            <i data-lucide="messages-square" class="w-5 h-5"></i>
+                        </a>
+                        <!-- TikTok Icon -->
+                        <a href="https://www.tiktok.com/@astacloud6?_r=1&_t=ZS-93RJptOpLhF" target="_blank" class="social-icon" title="TikTok">
+                            <i data-lucide="video" class="w-5 h-5"></i>
+                        </a>
+                        <!-- Instagram Icon -->
+                        <a href="https://www.instagram.com/asta.cloud?igsh=OW52cGVyYnI1MTBp" target="_blank" class="social-icon" title="Instagram">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scroll to Top Button -->
+        <div class="scroll-top" id="scrollTop">
+            <i data-lucide="arrow-up" class="w-6 h-6"></i>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container" style="display: none;">
+        <div class="login-form">
+            <h2 class="text-2xl font-bold mb-6 text-center gradient-text">Login</h2>
+            <form id="loginForm">
+                <div class="mb-4">
+                    <label for="username" class="block text-gray-700 mb-2">Username</label>
+                    <input type="text" id="username" name="username" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-gray-700 mb-2">Password</label>
+                    <input type="password" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-blue-300 text-white py-2 rounded-md font-semibold hover:shadow-lg transition-shadow">Login</button>
+                <p class="text-center mt-4 text-gray-600">
+                    <a href="#" onclick="showMainWebsite()" class="text-blue-500 hover:underline">Kembali ke Website</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard">
+        <!-- Sidebar -->
+        <div class="admin-sidebar" id="adminSidebar">
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-6">Admin Dashboard</h2>
+                <ul class="space-y-2">
+                    <li><a href="#" onclick="showAdminSection('dashboard')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="layout-dashboard" class="inline w-4 h-4 mr-2"></i> Dashboard</a></li>
+                    <li><a href="#" onclick="showAdminSection('products')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="shopping-bag" class="inline w-4 h-4 mr-2"></i> Kelola Produk</a></li>
+                    <li><a href="#" onclick="showAdminSection('services')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="bell" class="inline w-4 h-4 mr-2"></i> Kelola Layanan</a></li>
+                    <li><a href="#" onclick="showAdminSection('domains')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="globe" class="inline w-4 h-4 mr-2"></i> Kelola Domain</a></li>
+                    <li><a href="#" onclick="showAdminSection('testimonials')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="message-circle" class="inline w-4 h-4 mr-2"></i> Kelola Testimoni</a></li>
+                    <li><a href="#" onclick="logout()" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="log-out" class="inline w-4 h-4 mr-2"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="adminMenuToggle" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <!-- Dashboard Section -->
+            <div id="adminDashboardSection" class="admin-section">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Dashboard</h1>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-blue-500 text-white mr-4">
+                                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Produk</p>
+                                    <p class="text-2xl font-bold" id="totalProducts">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-green-500 text-white mr-4">
+                                    <i data-lucide="bell" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Layanan</p>
+                                    <p class="text-2xl font-bold" id="totalServices">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-purple-500 text-white mr-4">
+                                    <i data-lucide="globe" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Domain</p>
+                                    <p class="text-2xl font-bold" id="totalDomains">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-orange-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-orange-500 text-white mr-4">
+                                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Testimoni</p>
+                                    <p class="text-2xl font-bold" id="totalTestimonials">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="adminProductsSection" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Kelola Produk</h1>
+                    
+                    <!-- Add Product Form -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Produk Baru</h2>
+                        <form id="addProductForm" class="admin-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="productName">Nama Produk</label>
+                                    <input type="text" id="productName" required>
+                                </div>
+                                <div>
+                                    <label for="productPrice">Harga Produk</label>
+                                    <input type="text" id="productPrice" required>
+                                </div>
+                                <div>
+                                    <label for="productDiscount">Diskon (%)</label>
+                                    <input type="number" id="productDiscount" min="0" max="100" value="0">
+                                </div>
+                                <div>
+                                    <label for="productImage">URL Gambar Produk</label>
+                                    <input type="text" id="productImage" required>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="productDescription">Deskripsi Produk</label>
+                                    <textarea id="productDescription" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit">Tambah Produk</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Products Table -->
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Daftar Produk</h2>
+                        <div class="overflow-x-auto">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Produk</th>
+                                        <th>Harga</th>
+                                        <th>Diskon</th>
+                                        <th>Deskripsi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTableBody">
+                                    <!-- Products will be dynamically loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div id="adminServicesSection" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Kelola Layanan</h1>
+                    
+                    <!-- Add Service Form -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Layanan Baru</h2>
+                        <form id="addServiceForm" class="admin-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="serviceName">Nama Layanan</label>
+                                    <input type="text" id="serviceName" required>
+                                </div>
+                                <div>
+                                    <label for="servicePrice">Harga Layanan</label>
+                                    <input type="text" id="servicePrice" required>
+                                </div>
+                                <div>
+                                    <label for="serviceDiscount">Diskon (%)</label>
+                                    <input type="number" id="serviceDiscount" min="0" max="100" value="0">
+                                </div>
+                                <div>
+                                    <label for="serviceIcon">Icon (lucide icon name)</label>
+                                    <input type="text" id="serviceIcon" placeholder="contoh: palette" required>
+                                </div>
+                                <div>
+                                    <label for="serviceColor">Warna Gradient</label>
+                                    <select id="serviceColor" required>
+                                        <option value="blue">Biru</option>
+                                        <option value="purple">Ungu</option>
+                                        <option value="green">Hijau</option>
+                                        <option value="orange">Oranye</option>
+                                        <option value="red">Merah</option>
+                                    </select>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="serviceDescription">Deskripsi Layanan</label>
+                                    <textarea id="serviceDescription" rows="3" required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit">Tambah Layanan</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Services Table -->
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Daftar Layanan</h2>
+                        <div class="overflow-x-auto">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Layanan</th>
+                                        <th>Harga</th>
+                                        <th>Diskon</th>
+                                        <th>Deskripsi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="servicesTableBody">
+                                    <!-- Services will be dynamically loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Domains Section -->
+            <div id="adminDomainsSection" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Kelola Domain & Hosting</h1>
+                    
+                     <!-- Add Domain Form -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Paket Domain/Hosting Baru</h2>
+                        <form id="addDomainForm" class="admin-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="domainName">Nama Paket</label>
+                                    <input type="text" id="domainName" required>
+                                </div>
+                                <div>
+                                    <label for="domainPrice">Harga/Tahun</label>
+                                    <input type="text" id="domainPrice" required>
+                                </div>
+                                <div>
+                                    <label for="domainDiscount">Diskon (%)</label>
+                                    <input type="number" id="domainDiscount" min="0" max="100" value="0">
+                                </div>
+                                <div>
+                                    <label for="domainType">Tipe</label>
+                                    <select id="domainType" required>
+                                        <option value="domain">Domain Only</option>
+                                        <option value="hosting">Hosting Only</option>
+                                        <option value="package">Domain + Hosting</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="domainStorage">Storage/Space</label>
+                                    <input type="text" id="domainStorage" placeholder="contoh: 10GB" required>
+                                </div>
+                                <div>
+                                    <label for="domainBandwidth">Bandwidth</label>
+                                    <input type="text" id="domainBandwidth" placeholder="contoh: Unlimited" required>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="domainFeatures">Fitur (pisahkan dengan koma)</label>
+                                    <textarea id="domainFeatures" rows="3" placeholder="contoh: Free SSL, Email Accounts, Backup Harian" required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit">Tambah Paket</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Domains Table -->
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Daftar Paket</h2>
+                        <div class="overflow-x-auto">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Paket</th>
+                                        <th>Tipe</th>
+                                        <th>Harga</th>
+                                        <th>Diskon</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="domainsTableBody">
+                                    <!-- Domains will be dynamically loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div id="adminTestimonialsSection" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Kelola Testimoni</h1>
+                    
+                    <!-- Add Testimonial Form -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Testimoni Baru</h2>
+                        <form id="addTestimonialForm" class="admin-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="testimonialName">Nama Pelanggan</label>
+                                    <input type="text" id="testimonialName" required>
+                                </div>
+                                <div>
+                                    <label for="testimonialRating">Rating (1-5)</label>
+                                    <select id="testimonialRating" required>
+                                        <option value="5">5 Bintang</option>
+                                        <option value="4.5">4.5 Bintang</option>
+                                        <option value="4">4 Bintang</option>
+                                        <option value="3.5">3.5 Bintang</option>
+                                        <option value="3">3 Bintang</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="testimonialImage">URL Foto Pelanggan</label>
+                                    <input type="text" id="testimonialImage" required>
+                                </div>
+                                <div>
+                                    <label for="testimonialCompany">Perusahaan (opsional)</label>
+                                    <input type="text" id="testimonialCompany">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="testimonialText">Testimoni</label>
+                                    <textarea id="testimonialText" rows="4" required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit">Tambah Testimoni</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Testimonials Table -->
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Daftar Testimoni</h2>
+                        <div class="overflow-x-auto">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Pelanggan</th>
+                                        <th>Rating</th>
+                                        <th>Testimoni</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="testimonialsTableBody">
+                                    <!-- Testimonials will be dynamically loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modals -->
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-xl font-bold">Edit Produk</h2>
+                <button class="close-modal" onclick="closeModal('editProductModal')">&times;</button>
+            </div>
+            <form id="editProductForm" class="admin-form">
+                <input type="hidden" id="editProductId">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="editProductName">Nama Produk</label>
+                        <input type="text" id="editProductName" required>
+                    </div>
+                    <div>
+                        <label for="editProductPrice">Harga Produk</label>
+                        <input type="text" id="editProductPrice" required>
+                    </div>
+                    <div>
+                        <label for="editProductDiscount">Diskon (%)</label>
+                        <input type="number" id="editProductDiscount" min="0" max="100">
+                    </div>
+                    <div>
+                        <label for="editProductImage">URL Gambar Produk</label>
+                        <input type="text" id="editProductImage" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="editProductDescription">Deskripsi Produk</label>
+                        <textarea id="editProductDescription" rows="3"></textarea>
+                    </div>
+                </div>
+                <button type="submit">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Service Modal -->
+    <div id="editServiceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-xl font-bold">Edit Layanan</h2>
+                <button class="close-modal" onclick="closeModal('editServiceModal')">&times;</button>
+            </div>
+            <form id="editServiceForm" class="admin-form">
+                <input type="hidden" id="editServiceId">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="editServiceName">Nama Layanan</label>
+                        <input type="text" id="editServiceName" required>
+                    </div>
+                    <div>
+                        <label for="editServicePrice">Harga Layanan</label>
+                        <input type="text" id="editServicePrice" required>
+                    </div>
+                    <div>
+                        <label for="editServiceDiscount">Diskon (%)</label>
+                        <input type="number" id="editServiceDiscount" min="0" max="100">
+                    </div>
+                    <div>
+                        <label for="editServiceIcon">Icon (lucide icon name)</label>
+                        <input type="text" id="editServiceIcon" required>
+                    </div>
+                    <div>
+                        <label for="editServiceColor">Warna Gradient</label>
+                        <select id="editServiceColor" required>
+                            <option value="blue">Biru</option>
+                            <option value="purple">Ungu</option>
+                            <option value="green">Hijau</option>
+                            <option value="orange">Oranye</option>
+                            <option value="red">Merah</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="editServiceDescription">Deskripsi Layanan</label>
+                        <textarea id="editServiceDescription" rows="3" required></textarea>
+                    </div>
+                </div>
+                <button type="submit">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Domain Modal -->
+    <div id="editDomainModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-xl font-bold">Edit Paket Domain/Hosting</h2>
+                <button class="close-modal" onclick="closeModal('editDomainModal')">&times;</button>
+            </div>
+            <form id="editDomainForm" class="admin-form">
+                <input type="hidden" id="editDomainId">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="editDomainName">Nama Paket</label>
+                        <input type="text" id="editDomainName" required>
+                    </div>
+                    <div>
+                        <label for="editDomainPrice">Harga/Tahun</label>
+                        <input type="text" id="editDomainPrice" required>
+                    </div>
+                    <div>
+                        <label for="editDomainDiscount">Diskon (%)</label>
+                        <input type="number" id="editDomainDiscount" min="0" max="100">
+                    </div>
+                    <div>
+                        <label for="editDomainType">Tipe</label>
+                        <select id="editDomainType" required>
+                            <option value="domain">Domain Only</option>
+                            <option value="hosting">Hosting Only</option>
+                            <option value="package">Domain + Hosting</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="editDomainStorage">Storage/Space</label>
+                        <input type="text" id="editDomainStorage" required>
+                    </div>
+                    <div>
+                        <label for="editDomainBandwidth">Bandwidth</label>
+                        <input type="text" id="editDomainBandwidth" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="editDomainFeatures">Fitur (pisahkan dengan koma)</label>
+                        <textarea id="editDomainFeatures" rows="3" required></textarea>
+                    </div>
+                </div>
+                <button type="submit">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Testimonial Modal -->
+    <div id="editTestimonialModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-xl font-bold">Edit Testimoni</h2>
+                <button class="close-modal" onclick="closeModal('editTestimonialModal')">&times;</button>
+            </div>
+            <form id="editTestimonialForm" class="admin-form">
+                <input type="hidden" id="editTestimonialId">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="editTestimonialName">Nama Pelanggan</label>
+                        <input type="text" id="editTestimonialName" required>
+                    </div>
+                    <div>
+                        <label for="editTestimonialRating">Rating (1-5)</label>
+                        <select id="editTestimonialRating" required>
+                            <option value="5">5 Bintang</option>
+                            <option value="4.5">4.5 Bintang</option>
+                            <option value="4">4 Bintang</option>
+                            <option value="3.5">3.5 Bintang</option>
+                            <option value="3">3 Bintang</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="editTestimonialImage">URL Foto Pelanggan</label>
+                        <input type="text" id="editTestimonialImage" required>
+                    </div>
+                    <div>
+                        <label for="editTestimonialCompany">Perusahaan (opsional)</label>
+                        <input type="text" id="editTestimonialCompany">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="editTestimonialText">Testimoni</label>
+                        <textarea id="editTestimonialText" rows="4" required></textarea>
+                    </div>
+                </div>
+                <button type="submit">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Initialize Swiper for Hero Slider
+        const swiper = new Swiper('.mySwiper', {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Initialize Swiper for Testimonials
+        let testimonialSwiper;
+
+        // Color gradients for services
+        const colorGradients = {
+            blue: 'from-blue-500 to-blue-300',
+            purple: 'from-purple-500 to-pink-500',
+            green: 'from-green-500 to-teal-500',
+            orange: 'from-orange-500 to-red-500',
+            red: 'from-red-500 to-pink-500'
+        };
+
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', currentTheme);
+        
+        // Update icon based on current theme
+        if (currentTheme === 'dark') {
+            themeIcon.setAttribute('data-lucide', 'moon');
+        } else {
+            themeIcon.setAttribute('data-lucide', 'sun');
+        }
+        lucide.createIcons();
+
+        // Toggle theme
+        themeToggle.addEventListener('click', function() {
+            const theme = htmlElement.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update icon
+            if (newTheme === 'dark') {
+                themeIcon.setAttribute('data-lucide', 'moon');
+            } else {
+                themeIcon.setAttribute('data-lucide', 'sun');
+            }
+            lucide.createIcons();
+        });
+
+        // Data Management
+        const dataManager = {
+            // Get products from localStorage
+            getProducts: function() {
+                const products = localStorage.getItem('astaCloudProducts');
+                return products ? JSON.parse(products) : this.getDefaultProducts();
+            },
+            
+            // Save products to localStorage
+            saveProducts: function(products) {
+                localStorage.setItem('astaCloudProducts', JSON.stringify(products));
+                this.loadProducts();
+                this.loadProductsToAdminTable();
+                this.updateDashboardStats();
+            },
+            
+            // Get services from localStorage
+            getServices: function() {
+                const services = localStorage.getItem('astaCloudServices');
+                return services ? JSON.parse(services) : this.getDefaultServices();
+            },
+            
+            // Save services to localStorage
+            saveServices: function(services) {
+                localStorage.setItem('astaCloudServices', JSON.stringify(services));
+                this.loadServices();
+                this.loadServicesToAdminTable();
+                this.updateDashboardStats();
+            },
+            
+            // Get domains from localStorage
+            getDomains: function() {
+                const domains = localStorage.getItem('astaCloudDomains');
+                return domains ? JSON.parse(domains) : this.getDefaultDomains();
+            },
+            
+            // Save domains to localStorage
+            saveDomains: function(domains) {
+                localStorage.setItem('astaCloudDomains', JSON.stringify(domains));
+                this.loadDomains();
+                this.loadDomainsToAdminTable();
+                this.updateDashboardStats();
+            },
+            
+            // Get testimonials from localStorage
+            getTestimonials: function() {
+                const testimonials = localStorage.getItem('astaCloudTestimonials');
+                return testimonials ? JSON.parse(testimonials) : this.getDefaultTestimonials();
+            },
+            
+            // Save testimonials to localStorage
+            saveTestimonials: function(testimonials) {
+                localStorage.setItem('astaCloudTestimonials', JSON.stringify(testimonials));
+                this.loadTestimonials();
+                this.loadTestimonialsToAdminTable();
+                this.updateDashboardStats();
+            },
+            
+            // Default products if localStorage is empty
+            getDefaultProducts: function() {
+                return [
+                    {
+                        id: 1,
+                        name: "Keyboard Mechanical",
+                        price: "Rp 350.000",
+                        discount: 10,
+                        image: "https://via.placeholder.com/400x300/1a5fb4/ffffff?text=Keyboard",
+                        description: "Keyboard mechanical dengan switch blue yang nyaman untuk gaming dan mengetik"
+                    },
+                    {
+                        id: 2,
+                        name: "Mouse Gaming",
+                        price: "Rp 150.000",
+                        discount: 0,
+                        image: "https://files.catbox.moe/0nv974.jpg",
+                        description: "Mouse gaming dengan DPI tinggi dan desain ergonomis"
+                    },
+                    {
+                        id: 3,
+                        name: "Mouse Pad XXL",
+                        price: "Rp 75.000",
+                        discount: 15,
+                        image: "https://files.catbox.moe/rcc9r4.jpg",
+                        description: "Mouse pad ekstra besar dengan permukaan halus untuk presisi maksimal"
+                    },
+                    {
+                        id: 4,
+                        name: "Headset Gaming",
+                        price: "Rp 200.000",
+                        discount: 0,
+                        image: "https://via.placeholder.com/400x300/62a0ea/ffffff?text=Headset",
+                        description: "Headset gaming dengan kualitas suara jernih dan microphone noise-cancelling"
+                    },
+                    {
+                        id: 5,
+                        name: "Webcam HD",
+                        price: "Rp 300.000",
+                        discount: 20,
+                        image: "https://via.placeholder.com/400x300/1a5fb4/ffffff?text=Webcam",
+                        description: "Webcam HD 1080p untuk video conference dan streaming"
+                    }
+                ];
+            },
+            
+            // Default services if localStorage is empty
+            getDefaultServices: function() {
+                return [
+                    {
+                        id: 1,
+                        name: "Jasa Desain",
+                        price: "Rp 50.000",
+                        discount: 0,
+                        icon: "palette",
+                        color: "blue",
+                        description: "Desain poster, presentasi, dan tugas kreatif dengan hasil profesional"
+                    },
+                    {
+                        id: 2,
+                        name: "Jasa Edit Video",
+                        price: "Rp 100.000",
+                        discount: 10,
+                        icon: "video",
+                        color: "purple",
+                        description: "Editing video profesional untuk kebutuhan konten Anda"
+                    },
+                    {
+                        id: 3,
+                        name: "Pasang Tempered Glass",
+                        price: "Rp 25.000",
+                        discount: 0,
+                        icon: "smartphone",
+                        color: "green",
+                        description: "Pemasangan tempered glass profesional dan rapi"
+                    },
+                    {
+                        id: 4,
+                        name: "Jasa Reset HP",
+                        price: "Rp 50.000",
+                        discount: 0,
+                        icon: "refresh-cw",
+                        color: "orange",
+                        description: "Reset HP dengan aman dan data terjaga"
+                    }
+                ];
+            },
+            
+            // Default domains if localStorage is empty
+            getDefaultDomains: function() {
+                return [
+                    {
+                        id: 1,
+                        name: "Starter Package",
+                        price: "Rp 150.000",
+                        discount: 0,
+                        type: "package",
+                        storage: "5GB",
+                        bandwidth: "100GB",
+                        features: ["1 Domain", "5 Email Accounts", "Free SSL", "Backup Mingguan"]
+                    },
+                    {
+                        id: 2,
+                        name: "Business Package",
+                        price: "Rp 300.000",
+                        discount: 15,
+                        type: "package",
+                        storage: "20GB",
+                        bandwidth: "Unlimited",
+                        features: ["2 Domain", "20 Email Accounts", "Free SSL", "Backup Harian", "Priority Support"]
+                    },
+                    {
+                        id: 3,
+                        name: "Premium Domain .COM",
+                        price: "Rp 120.000",
+                        discount: 10,
+                        type: "domain",
+                        storage: "-",
+                        bandwidth: "-",
+                        features: ["Domain .COM", "Free WHOIS Protection", "DNS Management"]
+                    }
+                ];
+            },
+            
+            // Default testimonials if localStorage is empty
+            getDefaultTestimonials: function() {
+                return [
+                    {
+                        id: 1,
+                        name: "Ahmad Rizki",
+                        rating: 5,
+                        image: "https://via.placeholder.com/80x80/1a5fb4/ffffff?text=AR",
+                        company: "PT. Tech Indonesia",
+                        text: "Pelayanan sangat memuaskan, produk berkualitas dan harga terjangkau. Saya sangat merekomendasikan ASTA CLOUD untuk kebutuhan teknologi Anda."
+                    },
+                    {
+                        id: 2,
+                        name: "Siti Nurhaliza",
+                        rating: 5,
+                        image: "https://via.placeholder.com/80x80/62a0ea/ffffff?text=SN",
+                        company: "Creative Studio",
+                        text: "Jasa desain yang sangat profesional dan hasilnya melebihi ekspektasi. Proses pengerjaan cepat dan komunikasi yang baik. Terima kasih ASTA CLOUD!"
+                    },
+                    {
+                        id: 3,
+                        name: "Budi Santoso",
+                        rating: 4.5,
+                        image: "https://via.placeholder.com/80x80/1a5fb4/ffffff?text=BS",
+                        company: "Gaming Community",
+                        text: "Keyboard mechanical yang saya beli sangat nyaman digunakan dan kualitasnya bagus. Harga juga lebih terjangkau dibanding toko lain. Recommended!"
+                    }
+                ];
+            },
+            
+            // Calculate discounted price
+            calculateDiscountPrice: function(price, discount) {
+                const numericPrice = parseInt(price.replace(/[^\d]/g, ''));
+                const discountAmount = numericPrice * (discount / 100);
+                const discountedPrice = numericPrice - discountAmount;
+                return `Rp ${discountedPrice.toLocaleString('id-ID')}`;
+            },
+            
+            // Load products to the website
+            loadProducts: function() {
+                const products = this.getProducts();
+                const productsGrid = document.getElementById('productsGrid');
+                
+                if (!productsGrid) return;
+                
+                productsGrid.innerHTML = '';
+                
+                products.forEach((product, index) => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow';
+                    productCard.setAttribute('data-aos', 'fade-up');
+                    productCard.setAttribute('data-aos-delay', (index + 1) * 100);
+                    
+                    let priceHTML = '';
+                    if (product.discount > 0) {
+                        const discountedPrice = this.calculateDiscountPrice(product.price, product.discount);
+                        priceHTML = `
+                            <div class="mb-4">
+                                <span class="original-price">${product.price}</span>
+                                <span class="discount-price">${discountedPrice}</span>
+                                <span class="discount-badge">-${product.discount}%</span>
+                            </div>
+                        `;
+                    } else {
+                        priceHTML = `<div class="text-blue-600 font-bold text-lg mb-4">${product.price}</div>`;
+                    }
+                    
+                    productCard.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">${product.name}</h3>
+                            <p class="text-gray-600 mb-4">${product.description || 'Produk berkualitas tinggi dengan harga terjangkau'}</p>
+                            ${priceHTML}
+                            <button class="w-full bg-gradient-to-r from-blue-500 to-blue-300 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-shadow" onclick="orderProduct('${product.name}')">Beli via WhatsApp</button>
+                        </div>
+                    `;
+                    
+                    productsGrid.appendChild(productCard);
+                });
+                
+                // Reinitialize AOS for new content
+                AOS.refresh();
+            },
+            
+            // Load services to the website
+            loadServices: function() {
+                const services = this.getServices();
+                const servicesGrid = document.getElementById('servicesGrid');
+                
+                if (!servicesGrid) return;
+                
+                servicesGrid.innerHTML = '';
+                
+                services.forEach((service, index) => {
+                    const serviceCard = document.createElement('div');
+                    serviceCard.className = 'bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow';
+                    serviceCard.setAttribute('data-aos', 'fade-up');
+                    serviceCard.setAttribute('data-aos-delay', (index + 1) * 100);
+                    
+                    let priceHTML = '';
+                    if (service.discount > 0) {
+                        const discountedPrice = this.calculateDiscountPrice(service.price, service.discount);
+                        priceHTML = `
+                            <div class="mb-4">
+                                <span class="original-price">${service.price}</span>
+                                <span class="discount-price">${discountedPrice}</span>
+                                <span class="discount-badge">-${service.discount}%</span>
+                            </div>
+                        `;
+                    } else {
+                        priceHTML = `<div class="text-${service.color}-600 font-bold mb-4">${service.price}</div>`;
+                    }
+                    
+                    serviceCard.innerHTML = `
+                        <div class="h-48 bg-gradient-to-r ${colorGradients[service.color]} flex items-center justify-center">
+                            <i data-lucide="${service.icon}" class="w-16 h-16 text-white"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">${service.name}</h3>
+                            <p class="text-gray-600 mb-4">${service.description}</p>
+                            ${priceHTML}
+                            <button class="w-full bg-gradient-to-r ${colorGradients[service.color]} text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-shadow" onclick="orderService('${service.name}')">Pesan Sekarang</button>
+                        </div>
+                    `;
+                    
+                    servicesGrid.appendChild(serviceCard);
+                });
+                
+                // Reinitialize Lucide icons
+                lucide.createIcons();
+                
+                // Reinitialize AOS for new content
+                AOS.refresh();
+            },
+            
+            // Load domains to the website
+            loadDomains: function() {
+                const domains = this.getDomains();
+                const domainGrid = document.getElementById('domainGrid');
+                
+                if (!domainGrid) return;
+                
+                domainGrid.innerHTML = '';
+                
+                domains.forEach((domain, index) => {
+                    const domainCard = document.createElement('div');
+                    domainCard.className = 'bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow';
+                    domainCard.setAttribute('data-aos', 'fade-up');
+                    domainCard.setAttribute('data-aos-delay', (index + 1) * 100);
+                    
+                    let priceHTML = '';
+                    if (domain.discount > 0) {
+                        const discountedPrice = this.calculateDiscountPrice(domain.price, domain.discount);
+                        priceHTML = `
+                            <div class="mb-4">
+                                <span class="original-price">${domain.price}/tahun</span>
+                                <span class="discount-price">${discountedPrice}/tahun</span>
+                                <span class="discount-badge">-${domain.discount}%</span>
+                            </div>
+                        `;
+                    } else {
+                        priceHTML = `<div class="text-blue-600 font-bold text-lg mb-4">${domain.price}/tahun</div>`;
+                    }
+                    
+                    const typeIcon = domain.type === 'domain' ? 'globe' : domain.type === 'hosting' ? 'server' : 'package';
+                    
+                    domainCard.innerHTML = `
+                        <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                            <i data-lucide="${typeIcon}" class="w-16 h-16 text-white"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">${domain.name}</h3>
+                            <p class="text-gray-600 mb-2">
+                                <i data-lucide="hard-drive" class="w-4 h-4 inline mr-1"></i> ${domain.storage} | 
+                                <i data-lucide="wifi" class="w-4 h-4 inline mr-1"></i> ${domain.bandwidth}
+                            </p>
+                            <ul class="text-sm text-gray-600 mb-4">
+                                ${domain.features.map(feature => `<li>✓ ${feature}</li>`).join('')}
+                            </ul>
+                            ${priceHTML}
+                            <button class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-shadow" onclick="orderDomain('${domain.name}')">Pesan Sekarang</button>
+                        </div>
+                    `;
+                    
+                    domainGrid.appendChild(domainCard);
+                });
+                
+                // Reinitialize Lucide icons
+                lucide.createIcons();
+                
+                // Reinitialize AOS for new content
+                AOS.refresh();
+            },
+            
+            // Load testimonials to the website
+            loadTestimonials: function() {
+                const testimonials = this.getTestimonials();
+                const testimonialsContainer = document.getElementById('testimonialsContainer');
+                
+                if (!testimonialsContainer) return;
+                
+                testimonialsContainer.innerHTML = '';
+                
+                testimonials.forEach((testimonial, index) => {
+                    const testimonialSlide = document.createElement('div');
+                    testimonialSlide.className = 'swiper-slide';
+                    
+                    // Generate star rating HTML
+                    let starsHTML = '';
+                    const fullStars = Math.floor(testimonial.rating);
+                    const hasHalfStar = testimonial.rating % 1 !== 0;
+                    
+                    for (let i = 0; i < fullStars; i++) {
+                        starsHTML += '<i data-lucide="star" class="w-4 h-4 fill-current"></i>';
+                    }
+                    
+                    if (hasHalfStar) {
+                        starsHTML += '<i data-lucide="star-half" class="w-4 h-4 fill-current"></i>';
+                    }
+                    
+                    testimonialSlide.innerHTML = `
+                        <div class="testimonial-card" data-aos="fade-up">
+                            <div class="flex items-center mb-4">
+                                <img src="${testimonial.image}" alt="${testimonial.name}" class="w-16 h-16 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-semibold">${testimonial.name}</h4>
+                                    ${testimonial.company ? `<p class="text-sm text-gray-500">${testimonial.company}</p>` : ''}
+                                    <div class="flex text-yellow-400">
+                                        ${starsHTML}
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600">"${testimonial.text}"</p>
+                        </div>
+                    `;
+                    
+                    testimonialsContainer.appendChild(testimonialSlide);
+                });
+                
+                // Reinitialize Swiper and Lucide icons
+                if (testimonialSwiper) {
+                    testimonialSwiper.destroy();
+                }
+                
+                testimonialSwiper = new Swiper('.testimonialSwiper', {
+                    spaceBetween: 30,
+                    centeredSlides: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 1,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                        },
+                    },
+                });
+                
+                // Reinitialize Lucide icons
+                lucide.createIcons();
+                
+                // Reinitialize AOS for new content
+                AOS.refresh();
+            },
+            
+            // Load products to admin table
+            loadProductsToAdminTable: function() {
+                const products = this.getProducts();
+                const productsTableBody = document.getElementById('productsTableBody');
+                
+                if (!productsTableBody) return;
+                
+                productsTableBody.innerHTML = '';
+                
+                products.forEach(product => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${product.id}</td>
+                        <td>${product.name}</td>
+                        <td>${product.price}</td>
+                        <td>${product.discount}%</td>
+                        <td>${product.description ? product.description.substring(0, 50) + '...' : '-'}</td>
+                        <td>
+                            <button class="edit-btn" onclick="editProduct(${product.id})">Edit</button>
+                            <button class="delete-btn" onclick="dataManager.deleteProduct(${product.id})">Hapus</button>
+                        </td>
+                    `;
+                    productsTableBody.appendChild(row);
+                });
+            },
+            
+            // Load services to admin table
+            loadServicesToAdminTable: function() {
+                const services = this.getServices();
+                const servicesTableBody = document.getElementById('servicesTableBody');
+                
+                if (!servicesTableBody) return;
+                
+                servicesTableBody.innerHTML = '';
+                
+                services.forEach(service => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${service.id}</td>
+                        <td>${service.name}</td>
+                        <td>${service.price}</td>
+                        <td>${service.discount}%</td>
+                        <td>${service.description ? service.description.substring(0, 50) + '...' : '-'}</td>
+                        <td>
+                            <button class="edit-btn" onclick="editService(${service.id})">Edit</button>
+                            <button class="delete-btn" onclick="dataManager.deleteService(${service.id})">Hapus</button>
+                        </td>
+                    `;
+                    servicesTableBody.appendChild(row);
+                });
+            },
+            
+            // Load domains to admin table
+            loadDomainsToAdminTable: function() {
+                const domains = this.getDomains();
+                const domainsTableBody = document.getElementById('domainsTableBody');
+                
+                if (!domainsTableBody) return;
+                
+                domainsTableBody.innerHTML = '';
+                
+                domains.forEach(domain => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${domain.id}</td>
+                        <td>${domain.name}</td>
+                        <td>${domain.type}</td>
+                        <td>${domain.price}</td>
+                        <td>${domain.discount}%</td>
+                        <td>
+                            <button class="edit-btn" onclick="editDomain(${domain.id})">Edit</button>
+                            <button class="delete-btn" onclick="dataManager.deleteDomain(${domain.id})">Hapus</button>
+                        </td>
+                    `;
+                    domainsTableBody.appendChild(row);
+                });
+            },
+            
+            // Load testimonials to admin table
+            loadTestimonialsToAdminTable: function() {
+                const testimonials = this.getTestimonials();
+                const testimonialsTableBody = document.getElementById('testimonialsTableBody');
+                
+                if (!testimonialsTableBody) return;
+                
+                testimonialsTableBody.innerHTML = '';
+                
+                testimonials.forEach(testimonial => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${testimonial.id}</td>
+                        <td>${testimonial.name}</td>
+                        <td>${testimonial.rating} Bintang</td>
+                        <td>${testimonial.text.substring(0, 50)}...</td>
+                        <td>
+                            <button class="edit-btn" onclick="editTestimonial(${testimonial.id})">Edit</button>
+                            <button class="delete-btn" onclick="dataManager.deleteTestimonial(${testimonial.id})">Hapus</button>
+                        </td>
+                    `;
+                    testimonialsTableBody.appendChild(row);
+                });
+            },
+            
+            // Add new product
+            addProduct: function(product) {
+                const products = this.getProducts();
+                const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
+                
+                products.push({
+                    id: newId,
+                    ...product
+                });
+                
+                this.saveProducts(products);
+            },
+            
+            // Update product
+            updateProduct: function(id, updatedProduct) {
+                const products = this.getProducts();
+                const index = products.findIndex(product => product.id === id);
+                
+                if (index !== -1) {
+                    products[index] = { id, ...updatedProduct };
+                    this.saveProducts(products);
+                }
+            },
+            
+            // Delete product
+            deleteProduct: function(id) {
+                if (confirm('Apakah Anda yakin ingin menghapus produk ini?')) {
+                    const products = this.getProducts();
+                    const filteredProducts = products.filter(product => product.id !== id);
+                    this.saveProducts(filteredProducts);
+                }
+            },
+            
+            // Add new service
+            addService: function(service) {
+                const services = this.getServices();
+                const newId = services.length > 0 ? Math.max(...services.map(s => s.id)) + 1 : 1;
+                
+                services.push({
+                    id: newId,
+                    ...service
+                });
+                
+                this.saveServices(services);
+            },
+            
+            // Update service
+            updateService: function(id, updatedService) {
+                const services = this.getServices();
+                const index = services.findIndex(service => service.id === id);
+                
+                if (index !== -1) {
+                    services[index] = { id, ...updatedService };
+                    this.saveServices(services);
+                }
+            },
+            
+            // Delete service
+            deleteService: function(id) {
+                if (confirm('Apakah Anda yakin ingin menghapus layanan ini?')) {
+                    const services = this.getServices();
+                    const filteredServices = services.filter(service => service.id !== id);
+                    this.saveServices(filteredServices);
+                }
+            },
+            
+            // Add new domain
+            addDomain: function(domain) {
+                const domains = this.getDomains();
+                const newId = domains.length > 0 ? Math.max(...domains.map(d => d.id)) + 1 : 1;
+                
+                domains.push({
+                    id: newId,
+                    ...domain
+                });
+                
+                this.saveDomains(domains);
+            },
+            
+            // Update domain
+            updateDomain: function(id, updatedDomain) {
+                const domains = this.getDomains();
+                const index = domains.findIndex(domain => domain.id === id);
+                
+                if (index !== -1) {
+                    domains[index] = { id, ...updatedDomain };
+                    this.saveDomains(domains);
+                }
+            },
+            
+            // Delete domain
+            deleteDomain: function(id) {
+                if (confirm('Apakah Anda yakin ingin menghapus paket ini?')) {
+                    const domains = this.getDomains();
+                    const filteredDomains = domains.filter(domain => domain.id !== id);
+                    this.saveDomains(filteredDomains);
+                }
+            },
+            
+            // Add new testimonial
+            addTestimonial: function(testimonial) {
+                const testimonials = this.getTestimonials();
+                const newId = testimonials.length > 0 ? Math.max(...testimonials.map(t => t.id)) + 1 : 1;
+                
+                testimonials.push({
+                    id: newId,
+                    ...testimonial
+                });
+                
+                this.saveTestimonials(testimonials);
+            },
+            
+            // Update testimonial
+            updateTestimonial: function(id, updatedTestimonial) {
+                const testimonials = this.getTestimonials();
+                const index = testimonials.findIndex(testimonial => testimonial.id === id);
+                
+                if (index !== -1) {
+                    testimonials[index] = { id, ...updatedTestimonial };
+                    this.saveTestimonials(testimonials);
+                }
+            },
+            
+            // Delete testimonial
+            deleteTestimonial: function(id) {
+                if (confirm('Apakah Anda yakin ingin menghapus testimoni ini?')) {
+                    const testimonials = this.getTestimonials();
+                    const filteredTestimonials = testimonials.filter(testimonial => testimonial.id !== id);
+                    this.saveTestimonials(filteredTestimonials);
+                }
+            },
+            
+            // Update dashboard statistics
+            updateDashboardStats: function() {
+                const products = this.getProducts();
+                const services = this.getServices();
+                const domains = this.getDomains();
+                const testimonials = this.getTestimonials();
+                
+                const totalProductsElement = document.getElementById('totalProducts');
+                const totalServicesElement = document.getElementById('totalServices');
+                const totalDomainsElement = document.getElementById('totalDomains');
+                const totalTestimonialsElement = document.getElementById('totalTestimonials');
+                
+                if (totalProductsElement) totalProductsElement.textContent = products.length;
+                if (totalServicesElement) totalServicesElement.textContent = services.length;
+                if (totalDomainsElement) totalDomainsElement.textContent = domains.length;
+                if (totalTestimonialsElement) totalTestimonialsElement.textContent = testimonials.length;
+            }
+        };
+
+        // Initialize data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load initial data
+            dataManager.loadProducts();
+            dataManager.loadServices();
+            dataManager.loadDomains();
+            dataManager.loadTestimonials();
+            dataManager.updateDashboardStats();
+            
+            // Set up form submissions
+            const addProductForm = document.getElementById('addProductForm');
+            if (addProductForm) {
+                addProductForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const product = {
+                        name: document.getElementById('productName').value,
+                        price: document.getElementById('productPrice').value,
+                        discount: parseInt(document.getElementById('productDiscount').value) || 0,
+                        image: document.getElementById('productImage').value,
+                        description: document.getElementById('productDescription').value
+                    };
+                    
+                    dataManager.addProduct(product);
+                    this.reset();
+                    alert('Produk berhasil ditambahkan!');
+                });
+            }
+            
+            const addServiceForm = document.getElementById('addServiceForm');
+            if (addServiceForm) {
+                addServiceForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const service = {
+                        name: document.getElementById('serviceName').value,
+                        price: document.getElementById('servicePrice').value,
+                        discount: parseInt(document.getElementById('serviceDiscount').value) || 0,
+                        icon: document.getElementById('serviceIcon').value,
+                        color: document.getElementById('serviceColor').value,
+                        description: document.getElementById('serviceDescription').value
+                    };
+                    
+                    dataManager.addService(service);
+                    this.reset();
+                    alert('Layanan berhasil ditambahkan!');
+                });
+            }
+            
+            const addDomainForm = document.getElementById('addDomainForm');
+            if (addDomainForm) {
+                addDomainForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const domain = {
+                        name: document.getElementById('domainName').value,
+                        price: document.getElementById('domainPrice').value,
+                        discount: parseInt(document.getElementById('domainDiscount').value) || 0,
+                        type: document.getElementById('domainType').value,
+                        storage: document.getElementById('domainStorage').value,
+                        bandwidth: document.getElementById('domainBandwidth').value,
+                        features: document.getElementById('domainFeatures').value.split(',').map(f => f.trim())
+                    };
+                    
+                    dataManager.addDomain(domain);
+                    this.reset();
+                    alert('Paket berhasil ditambahkan!');
+                });
+            }
+            
+            const addTestimonialForm = document.getElementById('addTestimonialForm');
+            if (addTestimonialForm) {
+                addTestimonialForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const testimonial = {
+                        name: document.getElementById('testimonialName').value,
+                        rating: parseFloat(document.getElementById('testimonialRating').value),
+                        image: document.getElementById('testimonialImage').value,
+                        company: document.getElementById('testimonialCompany').value,
+                        text: document.getElementById('testimonialText').value
+                    };
+                    
+                    dataManager.addTestimonial(testimonial);
+                    this.reset();
+                    alert('Testimoni berhasil ditambahkan!');
+                });
+            }
+            
+            // Set up edit form submissions
+            const editProductForm = document.getElementById('editProductForm');
+            if (editProductForm) {
+                editProductForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const id = parseInt(document.getElementById('editProductId').value);
+                    const product = {
+                        name: document.getElementById('editProductName').value,
+                        price: document.getElementById('editProductPrice').value,
+                        discount: parseInt(document.getElementById('editProductDiscount').value) || 0,
+                        image: document.getElementById('editProductImage').value,
+                        description: document.getElementById('editProductDescription').value
+                    };
+                    
+                    dataManager.updateProduct(id, product);
+                    closeModal('editProductModal');
+                    alert('Produk berhasil diperbarui!');
+                });
+            }
+            
+            const editServiceForm = document.getElementById('editServiceForm');
+            if (editServiceForm) {
+                editServiceForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const id = parseInt(document.getElementById('editServiceId').value);
+                    const service = {
+                        name: document.getElementById('editServiceName').value,
+                        price: document.getElementById('editServicePrice').value,
+                        discount: parseInt(document.getElementById('editServiceDiscount').value) || 0,
+                        icon: document.getElementById('editServiceIcon').value,
+                        color: document.getElementById('editServiceColor').value,
+                        description: document.getElementById('editServiceDescription').value
+                    };
+                    
+                    dataManager.updateService(id, service);
+                    closeModal('editServiceModal');
+                    alert('Layanan berhasil diperbarui!');
+                });
+            }
+            
+            const editDomainForm = document.getElementById('editDomainForm');
+            if (editDomainForm) {
+                editDomainForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const id = parseInt(document.getElementById('editDomainId').value);
+                    const domain = {
+                        name: document.getElementById('editDomainName').value,
+                        price: document.getElementById('editDomainPrice').value,
+                        discount: parseInt(document.getElementById('editDomainDiscount').value) || 0,
+                        type: document.getElementById('editDomainType').value,
+                        storage: document.getElementById('editDomainStorage').value,
+                        bandwidth: document.getElementById('editDomainBandwidth').value,
+                        features: document.getElementById('editDomainFeatures').value.split(',').map(f => f.trim())
+                    };
+                    
+                    dataManager.updateDomain(id, domain);
+                    closeModal('editDomainModal');
+                    alert('Paket berhasil diperbarui!');
+                });
+            }
+            
+            const editTestimonialForm = document.getElementById('editTestimonialForm');
+            if (editTestimonialForm) {
+                editTestimonialForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const id = parseInt(document.getElementById('editTestimonialId').value);
+                    const testimonial = {
+                        name: document.getElementById('editTestimonialName').value,
+                        rating: parseFloat(document.getElementById('editTestimonialRating').value),
+                        image: document.getElementById('editTestimonialImage').value,
+                        company: document.getElementById('editTestimonialCompany').value,
+                        text: document.getElementById('editTestimonialText').value
+                    };
+                    
+                    dataManager.updateTestimonial(id, testimonial);
+                    closeModal('editTestimonialModal');
+                    alert('Testimoni berhasil diperbarui!');
+                });
+            }
+        });
+
+        // Hide loader when page loads
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Admin mobile menu toggle
+        const adminMenuToggle = document.getElementById('adminMenuToggle');
+        const adminSidebar = document.getElementById('adminSidebar');
+
+        if (adminMenuToggle) {
+            adminMenuToggle.addEventListener('click', function() {
+                adminSidebar.classList.toggle('active');
+            });
+        }
+
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            // Show selected page
+            document.getElementById(pageId).classList.remove('hidden');
+
+            // Close mobile menu
+            mobileMenu.classList.add('hidden');
+            menuToggle.classList.remove('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Reinitialize AOS for new content
+            AOS.refresh();
+        }
+
+        // Show login page
+        function showLogin() {
+            document.getElementById('mainWebsite').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('adminDashboard').classList.remove('active');
+        }
+
+        // Show main website
+        function showMainWebsite() {
+            document.getElementById('mainWebsite').style.display = 'block';
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('adminDashboard').classList.remove('active');
+        }
+
+        // Show admin dashboard
+        function showAdminDashboard() {
+            document.getElementById('mainWebsite').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('adminDashboard').classList.add('active');
+            
+            // Load data to admin tables
+            dataManager.loadProductsToAdminTable();
+            dataManager.loadServicesToAdminTable();
+            dataManager.loadDomainsToAdminTable();
+            dataManager.loadTestimonialsToAdminTable();
+            dataManager.updateDashboardStats();
+            
+            // Show dashboard section by default
+            showAdminSection('dashboard');
+        }
+
+        // Show specific admin section
+        function showAdminSection(sectionId) {
+            // Hide all admin sections
+            const sections = document.querySelectorAll('.admin-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            const selectedSection = document.getElementById('admin' + sectionId.charAt(0).toUpperCase() + sectionId.slice(1) + 'Section');
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+            
+            // Load data to tables if needed
+            if (sectionId === 'products') {
+                dataManager.loadProductsToAdminTable();
+            } else if (sectionId === 'services') {
+                dataManager.loadServicesToAdminTable();
+            } else if (sectionId === 'domains') {
+                dataManager.loadDomainsToAdminTable();
+            } else if (sectionId === 'testimonials') {
+                dataManager.loadTestimonialsToAdminTable();
+            }
+            
+            // Close mobile menu
+            if (window.innerWidth <= 768) {
+                adminSidebar.classList.remove('active');
+            }
+        }
+
+        // Edit functions
+        function editProduct(id) {
+            const products = dataManager.getProducts();
+            const product = products.find(p => p.id === id);
+            
+            if (product) {
+                document.getElementById('editProductId').value = product.id;
+                document.getElementById('editProductName').value = product.name;
+                document.getElementById('editProductPrice').value = product.price;
+                document.getElementById('editProductDiscount').value = product.discount || 0;
+                document.getElementById('editProductImage').value = product.image;
+                document.getElementById('editProductDescription').value = product.description || '';
+                
+                openModal('editProductModal');
+            }
+        }
+
+        function editService(id) {
+            const services = dataManager.getServices();
+            const service = services.find(s => s.id === id);
+            
+            if (service) {
+                document.getElementById('editServiceId').value = service.id;
+                document.getElementById('editServiceName').value = service.name;
+                document.getElementById('editServicePrice').value = service.price;
+                document.getElementById('editServiceDiscount').value = service.discount || 0;
+                document.getElementById('editServiceIcon').value = service.icon;
+                document.getElementById('editServiceColor').value = service.color;
+                document.getElementById('editServiceDescription').value = service.description;
+                
+                openModal('editServiceModal');
+            }
+        }
+
+        function editDomain(id) {
+            const domains = dataManager.getDomains();
+            const domain = domains.find(d => d.id === id);
+            
+            if (domain) {
+                document.getElementById('editDomainId').value = domain.id;
+                document.getElementById('editDomainName').value = domain.name;
+                document.getElementById('editDomainPrice').value = domain.price;
+                document.getElementById('editDomainDiscount').value = domain.discount || 0;
+                document.getElementById('editDomainType').value = domain.type;
+                document.getElementById('editDomainStorage').value = domain.storage;
+                document.getElementById('editDomainBandwidth').value = domain.bandwidth;
+                document.getElementById('editDomainFeatures').value = domain.features.join(', ');
+                
+                openModal('editDomainModal');
+            }
+        }
+
+        function editTestimonial(id) {
+            const testimonials = dataManager.getTestimonials();
+            const testimonial = testimonials.find(t => t.id === id);
+            
+            if (testimonial) {
+                document.getElementById('editTestimonialId').value = testimonial.id;
+                document.getElementById('editTestimonialName').value = testimonial.name;
+                document.getElementById('editTestimonialRating').value = testimonial.rating;
+                document.getElementById('editTestimonialImage').value = testimonial.image;
+                document.getElementById('editTestimonialCompany').value = testimonial.company || '';
+                document.getElementById('editTestimonialText').value = testimonial.text;
+                
+                openModal('editTestimonialModal');
+            }
+        }
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Login form submission
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                // Simple authentication (in a real app, this would be server-side)
+                if (username === 'admin' && password === 'admin123') {
+                    showAdminDashboard();
+                } else {
+                    alert('Username atau password salah!');
+                }
+            });
+        }
+
+        // Logout function
+        function logout() {
+            if (confirm('Apakah Anda yakin ingin logout?')) {
+                showMainWebsite();
+            }
+        }
+
+        // Order functions
+        function orderService(serviceName) {
+            const message = `Halo ASTA CLOUD, saya tertarik dengan layanan: ${serviceName}. Mohon informasikan detail lebih lanjut.`;
+            const whatsappUrl = `https://wa.me/6285815185245?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function orderProduct(productName) {
+            const message = `Halo ASTA CLOUD, saya ingin membeli: ${productName}. Mohon informasikan ketersediaan dan cara pemesanannya.`;
+            const whatsappUrl = `https://wa.me/6285815185245?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function orderDomain(domainName) {
+            const message = `Halo ASTA CLOUD, saya tertarik dengan paket: ${domainName}. Mohon informasikan detail lebih lanjut.`;
+            const whatsappUrl = `https://wa.me/6285815185245?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Scroll to top functionality
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
