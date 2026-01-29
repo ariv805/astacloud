@@ -333,7 +333,7 @@ const dataManager = {
                 id: 2,
                 name: "Rama",
                 rating: 5,
-                image: "https://image2url.com/r2/default/images/1769698867694-69f9f4f4-813a-4d2f-9cc4-8ed8d5e52003.jpeg",
+                image: "https://image2url.com/r2/default/images/1769699256504-ea0bd234-36ee-4d55-9d73-d656622e2292.jpg",
                 company: "Pelanggan Jasa desain",
                 text: "Jasa desain yang sangat profesional dan hasilnya melebihi ekspektasi. Proses pengerjaan cepat dan komunikasi yang baik. Terima kasih ASTA CLOUD!"
             },
@@ -341,7 +341,7 @@ const dataManager = {
                 id: 3,
                 name: "Zidan",
                 rating: 4.5,
-                image: "https://image2url.com/r2/default/images/1769698867694-69f9f4f4-813a-4d2f-9cc4-8ed8d5e52003.jpeg",
+                image: "https://image2url.com/r2/default/images/1769699174123-0bd7916d-930b-41bc-8fa1-51afae63a972.jpeg",
                 company: "Pelanggan Produk aksesoris komputer",
                 text: "Keyboard mechanical yang saya beli sangat nyaman digunakan dan kualitasnya bagus. Harga juga lebih terjangkau dibanding toko lain. Recommended!"
             }
