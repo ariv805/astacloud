@@ -641,8 +641,8 @@
                             <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto">
                                 <i data-lucide="globe" class="w-8 h-8 text-white"></i>
                             </div>
-                            <h3 class="text-xl font-semibold mb-4 text-center">Domain</h3>
-                            <p class="text-gray-600 text-center">Solusi domain untuk kebutuhan website Anda</p>
+                            <h3 class="text-xl font-semibold mb-4 text-center">Domain & Hosting</h3>
+                            <p class="text-gray-600 text-center">Solusi domain dan hosting untuk kebutuhan website Anda</p>
                         </div>
                     </div>
                 </div>
@@ -671,7 +671,7 @@
             <!-- Domain Page -->
             <section id="domain" class="page hidden">
                 <div class="container mx-auto px-4 py-16">
-                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Domain</h2>
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Domain & Hosting</h2>
                     <div id="domainGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Domains will be dynamically loaded here -->
                     </div>
@@ -1399,7 +1399,7 @@
                     {
                         id: 1,
                         name: "Keyboard Mechanical",
-                        price: "Rp 60.000 - 120.000",
+                        price: "Rp Rp 60.000 - 120.000",
                         discount: 0,
                         image: "https://image2url.com/r2/default/images/1769590450832-267ca8d1-7113-49e2-88cf-fd9668ec4143.webp",
                         description: "Keyboard mechanical dengan switch blue yang nyaman untuk gaming dan mengetik"
@@ -1407,16 +1407,16 @@
                     {
                         id: 2,
                         name: "Mouse",
-                        price: "Rp 25.000 - 50.000",
+                        price: "Rp  25.000 - 50.000",
                         discount: 0,
                         image: "https://image2url.com/r2/default/images/1769590491825-e14373da-c1f9-4cec-989d-cc0a7575ba68.jpg",
-                        description: "Mouse dengan DPI tinggi dan desain ergonomis"
+                        description: "Mouse gaming dengan DPI tinggi dan desain ergonomis"
                     },
                     {
                         id: 3,
-                        name: "Mouse Pad ",
-                        price: "Rp 10.000 -25.000",
-                        discount: ,
+                        name: "Mouse Pad",
+                        price: "Rp 10.000 - 25.000",
+                        discount: 0,
                         image: "https://image2url.com/r2/default/images/1769590524899-6f8d84e5-2d9a-4e0c-ba41-cea7612929dd.jpg",
                         description: "Mouse pad ekstra besar dengan permukaan halus untuk presisi maksimal"
                     },
@@ -1432,7 +1432,7 @@
                         id: 5,
                         name: "Webcam HD",
                         price: "Rp 80.000 - 150.000",
-                        discount: 0,
+                        discount: 20,
                         image: "https://image2url.com/r2/default/images/1769590602521-c4f821d2-36f8-4147-98be-fb61ed011e17.jpg",
                         description: "Webcam HD 1080p untuk video conference dan streaming"
                     }
@@ -1454,8 +1454,8 @@
                     {
                         id: 2,
                         name: "Jasa Edit Video",
-                        price: "Rp  20.000 - 50.000",
-                        discount: 0,
+                        price: "Rp 20.000 - 50.000",
+                        discount: 10,
                         icon: "video",
                         color: "purple",
                         description: "Editing video profesional untuk kebutuhan konten Anda"
@@ -1463,7 +1463,7 @@
                     {
                         id: 3,
                         name: "Pasang Tempered Glass",
-                        price: "Rp  5.000",
+                        price: "Rp 5.000",
                         discount: 0,
                         icon: "smartphone",
                         color: "green",
@@ -1486,24 +1486,64 @@
                 return [
                     {
                         id: 1,
-                        name: "Domain My.id",
+                        name: "Domain my.id",
                         price: "Rp 15.000",
                         discount: 0,
                         type: "domain",
                         storage: "-",
                         bandwidth: "-",
-                        features: ["Domain .my.id","Free WHOIS Protection", "DNS Management"]
+                        features: ["Domain .COM", "Free WHOIS Protection", "DNS Management"]
                     },
-                    
-                    
+                    {
+                        id: 2,
+                        name: "Domain xyz",
+                        price: "Rp 40.000",
+                        discount: 0,
+                        type: "domain",
+                        storage: "-",
+                        bandwidth: "-",
+                        features: ["Domain .COM", "Free WHOIS Protection", "DNS Management"]
+                    },
+                    {
+                        id: 3,
+                        name: "Domain .COM",
+                        price: "Rp 120.000",
+                        discount: 0,
+                        type: "domain",
+                        storage: "-",
+                        bandwidth: "-",
+                        features: ["Domain .COM", "Free WHOIS Protection", "DNS Management"]
+                    }
                 ];
             },
             
             // Default testimonials if localStorage is empty
             getDefaultTestimonials: function() {
                 return [
-                 
-                    
+                    {
+                        id: 1,
+                        name: "Rizki",
+                        rating: 5,
+                        image: "https://via.placeholder.com/80x80/1a5fb4/ffffff?text=AR",
+                        company: "PT. Tech Indonesia",
+                        text: "Pelayanan sangat memuaskan, produk berkualitas dan harga terjangkau. Saya sangat merekomendasikan ASTA CLOUD untuk kebutuhan teknologi Anda."
+                    },
+                    {
+                        id: 2,
+                        name: "Rama",
+                        rating: 5,
+                        image: "https://via.placeholder.com/80x80/62a0ea/ffffff?text=SN",
+                        company: "Creative Studio",
+                        text: "Jasa desain yang sangat profesional dan hasilnya melebihi ekspektasi. Proses pengerjaan cepat dan komunikasi yang baik. Terima kasih ASTA CLOUD!"
+                    },
+                    {
+                        id: 3,
+                        name: "Zidan",
+                        rating: 4.5,
+                        image: "https://via.placeholder.com/80x80/1a5fb4/ffffff?text=BS",
+                        company: "Gaming Community",
+                        text: "Keyboard mechanical yang saya beli sangat nyaman digunakan dan kualitasnya bagus. Harga juga lebih terjangkau dibanding toko lain. Recommended!"
+                    }
                 ];
             },
             
