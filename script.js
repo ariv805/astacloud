@@ -1,4 +1,4 @@
-// Initialize Lucide Icons
+0// Initialize Lucide Icons
 lucide.createIcons();
 
 // Initialize AOS
@@ -168,7 +168,7 @@ const dataManager = {
                 id: 5,
                 name: "Webcam HD",
                 price: "Rp 80.000 - 150.000",
-                discount: 20,
+                discount: 0,
                 image: "https://image2url.com/r2/default/images/1769590602521-c4f821d2-36f8-4147-98be-fb61ed011e17.jpg",
                 description: "Webcam HD 1080p untuk video conference dan streaming"
             }
@@ -191,7 +191,7 @@ const dataManager = {
                 id: 2,
                 name: "Jasa Edit Video",
                 price: "Rp 20.000 - 50.000",
-                discount: 10,
+                discount: 0,
                 icon: "video",
                 color: "purple",
                 description: "Editing video profesional untuk kebutuhan konten Anda"
