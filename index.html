@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTA CLOUD - Marketplace Terpercaya</title>
+    
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Main Website -->
+    <div id="mainWebsite">
+        <!-- Navbar -->
+        <nav class="navbar fixed top-0 w-full z-50 shadow-md transition-all duration-300" id="navbar">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-3 cursor-pointer" onclick="showPage('home')">
+                    <img src="https://files.catbox.moe/ew2x0g.jpg" alt="Logo" class="w-10 h-10 rounded-full object-cover border-2 border-blue-600">
+                    <span class="text-xl font-bold gradient-text">ASTA CLOUD</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <!-- Theme Toggle Button -->
+                    <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                        <i data-lucide="sun" class="w-5 h-5" id="themeIcon"></i>
+                    </div>
+                    <div class="menu-toggle md:hidden flex flex-col cursor-pointer" id="menuToggle">
+                        <span class="w-6 h-0.5 bg-blue-600 my-1 rounded"></span>
+                        <span class="w-6 h-0.5 bg-blue-600 my-1 rounded"></span>
+                        <span class="w-6 h-0.5 bg-blue-600 my-1 rounded"></span>
+                    </div>
+                </div>
+                <ul class="hidden md:flex gap-6" id="navMenu">
+                    <li><a href="#" onclick="showPage('home')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="home" class="w-4 h-4"></i> Beranda</a></li>
+                    <li><a href="#" onclick="showPage('services')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="bell" class="w-4 h-4"></i> Layanan</a></li>
+                    <li><a href="#" onclick="showPage('products')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Produk</a></li>
+                    <li><a href="#" onclick="showPage('domain')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="globe" class="w-4 h-4"></i> Domain</a></li>
+                    <li><a href="#" onclick="showPage('testimonials')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="message-circle" class="w-4 h-4"></i> Testimoni</a></li>
+                    <li><a href="#" onclick="showLogin()" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="settings" class="w-4 h-4"></i> Login</a></li>
+                </ul>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="hidden md:hidden bg-white shadow-lg" id="mobileMenu">
+                <ul class="py-4 px-4 space-y-3">
+                    <li><a href="#" onclick="showPage('home')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="home" class="w-4 h-4"></i> Beranda</a></li>
+                    <li><a href="#" onclick="showPage('services')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="bell" class="w-4 h-4"></i> Layanan</a></li>
+                    <li><a href="#" onclick="showPage('products')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Produk</a></li>
+                    <li><a href="#" onclick="showPage('domain')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="globe" class="w-4 h-4"></i> Domain</a></li>
+                    <li><a href="#" onclick="showPage('testimonials')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="message-circle" class="w-4 h-4"></i> Testimoni</a></li>
+                    <li><a href="#" onclick="showLogin()" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="settings" class="w-4 h-4"></i> Login</a></li>
+                </ul>
+            </div>
+        </nav>
+
+         <!-- Main Content -->
+        <main class="pt-20 min-h-screen">
+            <!-- Home Page -->
+            <section id="home" class="page active">
+                <!-- Hero Section with Slider -->
+                <div class="swiper mySwiper h-96 md:h-[500px]">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide bg-gradient-to-r from-blue-500 to-blue-300 text-white flex flex-col justify-center items-center text-center p-8">
+                            <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-up">Selamat Datang di ASTA CLOUD</h1>
+                            <p class="text-lg md:text-xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="100">Solusi lengkap untuk kebutuhan digital dan teknologi Anda</p>
+                            <a href="#services" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors" data-aos="fade-up" data-aos-delay="200" onclick="showPage('services')">Jelajahi Layanan</a>
+                        </div>
+                        <div class="swiper-slide bg-gradient-to-r from-purple-500 to-pink-500 text-white flex flex-col justify-center items-center text-center p-8">
+                            <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-up">Produk Berkualitas</h1>
+                            <p class="text-lg md:text-xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="100">Peralatan komputer dan aksesoris dengan kualitas terbaik</p>
+                            <a href="#products" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-purple-50 transition-colors" data-aos="fade-up" data-aos-delay="200" onclick="showPage('products')">Lihat Produk</a>
+                        </div>
+                        <div class="swiper-slide bg-gradient-to-r from-green-500 to-teal-500 text-white flex flex-col justify-center items-center text-center p-8">
+                            <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-up">Layanan Profesional</h1>
+                            <p class="text-lg md:text-xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="100">Desain, editing video, dan perbaikan device</p>
+                            <a href="#services" class="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition-colors" data-aos="fade-up" data-aos-delay="200" onclick="showPage('services')">Pesan Sekarang</a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+
+                <!-- Features Section -->
+                <div class="container mx-auto px-4 py-16">
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Mengapa Memilih Kami</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" data-aos="fade-up" data-aos-delay="100" onclick="showPage('services')">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-300 rounded-full flex items-center justify-center mb-6 mx-auto">
+                                <i data-lucide="bell" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4 text-center">Layanan Profesional</h3>
+                            <p class="text-gray-600 text-center">Berbagai layanan profesional untuk desain, editing video, dan perbaikan device</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" data-aos="fade-up" data-aos-delay="200" onclick="showPage('products')">
+                            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 mx-auto">
+                                <i data-lucide="laptop" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4 text-center">Produk Berkualitas</h3>
+                            <p class="text-gray-600 text-center">Peralatan komputer dan aksesoris dengan kualitas terbaik</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" data-aos="fade-up" data-aos-delay="300" onclick="showPage('domain')">
+                            <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto">
+                                <i data-lucide="globe" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4 text-center">Domain & Hosting</h3>
+                            <p class="text-gray-600 text-center">Solusi domain dan hosting untuk kebutuhan website Anda</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+         <!-- Services Page -->
+            <section id="services" class="page hidden">
+                <div class="container mx-auto px-4 py-16">
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Layanan Kami</h2>
+                    <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Services will be dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Page -->
+            <section id="products" class="page hidden">
+                <div class="container mx-auto px-4 py-16">
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Produk Kami</h2>
+                    <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Products will be dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Domain Page -->
+            <section id="domain" class="page hidden">
+                <div class="container mx-auto px-4 py-16">
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Domain & Hosting</h2>
+                    <div id="domainGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Domains will be dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Page -->
+            <section id="testimonials" class="page hidden">
+                <div class="container mx-auto px-4 py-16">
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Testimoni Pelanggan</h2>
+                    <div class="swiper testimonialSwiper">
+                        <div id="testimonialsContainer" class="swiper-wrapper">
+                            <!-- Testimonials will be dynamically loaded here -->
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-8">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p>&copy; 2026 ASTA CLOUD. All rights reserved.</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <!-- WhatsApp Icon -->
+                        <a href="https://wa.me/6285815185245" target="_blank" class="social-icon" title="WhatsApp">
+                            <i data-lucide="messages-square" class="w-5 h-5"></i>
+                        </a>
+                        <!-- TikTok Icon -->
+                        <a href="https://www.tiktok.com/@astacloud6?_r=1&_t=ZS-93RJptOpLhF" target="_blank" class="social-icon" title="TikTok">
+                            <i data-lucide="video" class="w-5 h-5"></i>
+                        </a>
+                        <!-- Instagram Icon -->
+                        <a href="https://www.instagram.com/asta.cloud?igsh=OW52cGVyYnI1MTBp" target="_blank" class="social-icon" title="Instagram">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scroll to Top Button -->
+        <div class="scroll-top" id="scrollTop">
+            <i data-lucide="arrow-up" class="w-6 h-6"></i>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container" style="display: none;">
+        <div class="login-form">
+            <h2 class="text-2xl font-bold mb-6 text-center gradient-text">Login</h2>
+            <form id="loginForm">
+                <div class="mb-4">
+                    <label for="username" class="block text-gray-700 mb-2">Username</label>
+                    <input type="text" id="username" name="username" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-gray-700 mb-2">Password</label>
+                    <input type="password" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-blue-300 text-white py-2 rounded-md font-semibold hover:shadow-lg transition-shadow">Login</button>
+                <p class="text-center mt-4 text-gray-600">
+                    <a href="#" onclick="showMainWebsite()" class="text-blue-500 hover:underline">Kembali ke Website</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard">
+        <!-- Sidebar -->
+        <div class="admin-sidebar" id="adminSidebar">
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-6">Admin Dashboard</h2>
+                <ul class="space-y-2">
+                    <li><a href="#" onclick="showAdminSection('dashboard')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="layout-dashboard" class="inline w-4 h-4 mr-2"></i> Dashboard</a></li>
+                    <li><a href="#" onclick="showAdminSection('products')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="shopping-bag" class="inline w-4 h-4 mr-2"></i> Kelola Produk</a></li>
+                    <li><a href="#" onclick="showAdminSection('services')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="bell" class="inline w-4 h-4 mr-2"></i> Kelola Layanan</a></li>
+                    <li><a href="#" onclick="showAdminSection('domains')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="globe" class="inline w-4 h-4 mr-2"></i> Kelola Domain</a></li>
+                    <li><a href="#" onclick="showAdminSection('testimonials')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="message-circle" class="inline w-4 h-4 mr-2"></i> Kelola Testimoni</a></li>
+                    <li><a href="#" onclick="logout()" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="log-out" class="inline w-4 h-4 mr-2"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="adminMenuToggle" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <!-- Dashboard Section -->
+            <div id="adminDashboardSection" class="admin-section">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Dashboard</h1>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-blue-500 text-white mr-4">
+                                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Produk</p>
+                                    <p class="text-2xl font-bold" id="totalProducts">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-green-500 text-white mr-4">
+                                    <i data-lucide="bell" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Layanan</p>
+                                    <p class="text-2xl font-bold" id="totalServices">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-purple-500 text-white mr-4">
+                                    <i data-lucide="globe" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Domain</p>
+                                    <p class="text-2xl font-bold" id="totalDomains">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-orange-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-orange-500 text-white mr-4">
+                                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Testimoni</p>
+                                    <p class="text-2xl font-bold" id="totalTestimonials">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="adminProductsSection" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Kelola Produk</h1>
+                    
+                    <!-- Add Product Form -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Produk Baru</h2>
+                        <form id="addProductForm" class="admin-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="productName">Nama Produk</label>
+                                    <input type="text" id="productName" required>
+                                </div>
+                                <div>
+                                    <label for="productPrice">Harga Produk</label>
+                                    <input type="text" id="productPrice" required>
+                                </div>
+                                <div>
+                                    <label for="productDiscount">Diskon (%)</label>
+                                    <input type="number" id="productDiscount" min="0" max="100" value="0">
+                                </div>
+                                <div>
+                                    <label for="productImage">URL Gambar Produk</label>
+                                    <input type="text" id="productImage" required>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="productDescription">Deskripsi Produk</label>
+                                    <textarea id="productDescription" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit">Tambah Produk</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Products Table -->
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Daftar Produk</h2>
+                        <div class="overflow-x-auto">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Produk</th>
+                                        <th>Harga</th>
+                                        <th>Diskon</th>
+                                        <th>Deskripsi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTableBody">
+                                    <!-- Products will be dynamically loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div id="adminServicesSection" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Kelola Layanan</h1>
+                    
+                    <!-- Add Service Form -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Layanan Baru</h2>
+                        <form id="addServiceForm" class="admin-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="serviceName">Nama Layanan</label>
+                                    <input type="text" id="serviceName" required>
+                                </div>
+                                <div>
+                                    <label for="servicePrice">Harga Layanan</label>
+                                    <input type="text" id="servicePrice" required>
+                                </div>
+                                <div>
+                                    <label for="serviceDiscount">Diskon (%)</label>
+                                    <input type="number" id="serviceDiscount" min="0" max="100" value="0">
+                                </div>
+                                <div>
+                                    <label for="serviceIcon">Icon (lucide icon name)</label>
+                                    <input type="text" id="serviceIcon" placeholder="contoh: palette" required>
+                                </div>
+                                <div>
+                                    <label for="serviceColor">Warna Gradient</label>
+                                    <select id="serviceColor" required>
+                                        <option value="blue">Biru</option>
+                                        <option value="purple">Ungu</option>
+                                        <option value="green">Hijau</option>
+                                        <option value="orange">Oranye</option>
+                                        <option value="red">Merah</option>
+                                    </select>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="serviceDescription">Deskripsi Layanan</label>
+                                    <textarea id="serviceDescription" rows="3" required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit">Tambah Layanan</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Services Table -->
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Daftar Layanan</h2>
+                        <div class="overflow-x-auto">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Layanan</th>
+                                        <th>Harga</th>
+                                        <th>Diskon</th>
+                                        <th>Deskripsi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="servicesTableBody">
+                                    <!-- Services will be dynamically loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Domains Section -->
+            <div id="adminDomainsSection" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Kelola Domain & Hosting</h1>
+                    
+                     <!-- Add Domain Form -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Paket Domain/Hosting Baru</h2>
+                        <form id="addDomainForm" class="admin-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="domainName">Nama Paket</label>
+                                    <input type="text" id="domainName" required>
+                                </div>
+                                <div>
+                                    <label for="domainPrice">Harga/Tahun</label>
+                                    <input type="text" id="domainPrice" required>
+                                </div>
+                                <div>
+                                    <label for="domainDiscount">Diskon (%)</label>
+                                    <input type="number" id="domainDiscount" min="0" max="100" value="0">
+                                </div>
+                                <div>
+                                    <label for="domainType">Tipe</label>
+                                    <select id="domainType" required>
+                                        <option value="domain">Domain Only</option>
+                                        <option value="hosting">Hosting Only</option>
+                                        <option value="package">Domain + Hosting</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="domainStorage">Storage/Space</label>
+                                    <input type="text" id="domainStorage" placeholder="contoh: 10GB" required>
+                                </div>
+                                <div>
+                                    <label for="domainBandwidth">Bandwidth</label>
+                                    <input type="text" id="domainBandwidth" placeholder="contoh: Unlimited" required>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="domainFeatures">Fitur (pisahkan dengan koma)</label>
+                                    <textarea id="domainFeatures" rows="3" placeholder="contoh: Free SSL, Email Accounts, Backup Harian" required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit">Tambah Paket</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Domains Table -->
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Daftar Paket</h2>
+                        <div class="overflow-x-auto">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Paket</th>
+                                        <th>Tipe</th>
+                                        <th>Harga</th>
+                                        <th>Diskon</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="domainsTableBody">
+                                    <!-- Domains will be dynamically loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div id="adminTestimonialsSection" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Kelola Testimoni</h1>
+                    
+                    <!-- Add Testimonial Form -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Testimoni Baru</h2>
+                        <form id="addTestimonialForm" class="admin-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="testimonialName">Nama Pelanggan</label>
+                                    <input type="text" id="testimonialName" required>
+                                </div>
+                                <div>
+                                    <label for="testimonialRating">Rating (1-5)</label>
+                                    <select id="testimonialRating" required>
+                                        <option value="5">5 Bintang</option>
+                                        <option value="4.5">4.5 Bintang</option>
+                                        <option value="4">4 Bintang</option>
+                                        <option value="3.5">3.5 Bintang</option>
+                                        <option value="3">3 Bintang</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="testimonialImage">URL Foto Pelanggan</label>
+                                    <input type="text" id="testimonialImage" required>
+                                </div>
+                                <div>
+                                    <label for="testimonialCompany">Perusahaan (opsional)</label>
+                                    <input type="text" id="testimonialCompany">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="testimonialText">Testimoni</label>
+                                    <textarea id="testimonialText" rows="4" required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit">Tambah Testimoni</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Testimonials Table -->
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Daftar Testimoni</h2>
+                        <div class="overflow-x-auto">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Pelanggan</th>
+                                        <th>Rating</th>
+                                        <th>Testimoni</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="testimonialsTableBody">
+                                    <!-- Testimonials will be dynamically loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modals -->
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-xl font-bold">Edit Produk</h2>
+                <button class="close-modal" onclick="closeModal('editProductModal')">&times;</button>
+            </div>
+            <form id="editProductForm" class="admin-form">
+                <input type="hidden" id="editProductId">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="editProductName">Nama Produk</label>
+                        <input type="text" id="editProductName" required>
+                    </div>
+                    <div>
+                        <label for="editProductPrice">Harga Produk</label>
+                        <input type="text" id="editProductPrice" required>
+                    </div>
+                    <div>
+                        <label for="editProductDiscount">Diskon (%)</label>
+                        <input type="number" id="editProductDiscount" min="0" max="100">
+                    </div>
+                    <div>
+                        <label for="editProductImage">URL Gambar Produk</label>
+                        <input type="text" id="editProductImage" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="editProductDescription">Deskripsi Produk</label>
+                        <textarea id="editProductDescription" rows="3"></textarea>
+                    </div>
+                </div>
+                <button type="submit">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Service Modal -->
+    <div id="editServiceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-xl font-bold">Edit Layanan</h2>
+                <button class="close-modal" onclick="closeModal('editServiceModal')">&times;</button>
+            </div>
+            <form id="editServiceForm" class="admin-form">
+                <input type="hidden" id="editServiceId">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="editServiceName">Nama Layanan</label>
+                        <input type="text" id="editServiceName" required>
+                    </div>
+                    <div>
+                        <label for="editServicePrice">Harga Layanan</label>
+                        <input type="text" id="editServicePrice" required>
+                    </div>
+                    <div>
+                        <label for="editServiceDiscount">Diskon (%)</label>
+                        <input type="number" id="editServiceDiscount" min="0" max="100">
+                    </div>
+                    <div>
+                        <label for="editServiceIcon">Icon (lucide icon name)</label>
+                        <input type="text" id="editServiceIcon" required>
+                    </div>
+                    <div>
+                        <label for="editServiceColor">Warna Gradient</label>
+                        <select id="editServiceColor" required>
+                            <option value="blue">Biru</option>
+                            <option value="purple">Ungu</option>
+                            <option value="green">Hijau</option>
+                            <option value="orange">Oranye</option>
+                            <option value="red">Merah</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="editServiceDescription">Deskripsi Layanan</label>
+                        <textarea id="editServiceDescription" rows="3" required></textarea>
+                    </div>
+                </div>
+                <button type="submit">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Domain Modal -->
+    <div id="editDomainModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-xl font-bold">Edit Paket Domain/Hosting</h2>
+                <button class="close-modal" onclick="closeModal('editDomainModal')">&times;</button>
+            </div>
+            <form id="editDomainForm" class="admin-form">
+                <input type="hidden" id="editDomainId">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="editDomainName">Nama Paket</label>
+                        <input type="text" id="editDomainName" required>
+                    </div>
+                    <div>
+                        <label for="editDomainPrice">Harga/Tahun</label>
+                        <input type="text" id="editDomainPrice" required>
+                    </div>
+                    <div>
+                        <label for="editDomainDiscount">Diskon (%)</label>
+                        <input type="number" id="editDomainDiscount" min="0" max="100">
+                    </div>
+                    <div>
+                        <label for="editDomainType">Tipe</label>
+                        <select id="editDomainType" required>
+                            <option value="domain">Domain Only</option>
+                            <option value="hosting">Hosting Only</option>
+                            <option value="package">Domain + Hosting</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="editDomainStorage">Storage/Space</label>
+                        <input type="text" id="editDomainStorage" required>
+                    </div>
+                    <div>
+                        <label for="editDomainBandwidth">Bandwidth</label>
+                        <input type="text" id="editDomainBandwidth" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="editDomainFeatures">Fitur (pisahkan dengan koma)</label>
+                        <textarea id="editDomainFeatures" rows="3" required></textarea>
+                    </div>
+                </div>
+                <button type="submit">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Testimonial Modal -->
+    <div id="editTestimonialModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-xl font-bold">Edit Testimoni</h2>
+                <button class="close-modal" onclick="closeModal('editTestimonialModal')">&times;</button>
+            </div>
+            <form id="editTestimonialForm" class="admin-form">
+                <input type="hidden" id="editTestimonialId">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="editTestimonialName">Nama Pelanggan</label>
+                        <input type="text" id="editTestimonialName" required>
+                    </div>
+                    <div>
+                        <label for="editTestimonialRating">Rating (1-5)</label>
+                        <select id="editTestimonialRating" required>
+                            <option value="5">5 Bintang</option>
+                            <option value="4.5">4.5 Bintang</option>
+                            <option value="4">4 Bintang</option>
+                            <option value="3.5">3.5 Bintang</option>
+                            <option value="3">3 Bintang</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="editTestimonialImage">URL Foto Pelanggan</label>
+                        <input type="text" id="editTestimonialImage" required>
+                    </div>
+                    <div>
+                        <label for="editTestimonialCompany">Perusahaan (opsional)</label>
+                        <input type="text" id="editTestimonialCompany">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="editTestimonialText">Testimoni</label>
+                        <textarea id="editTestimonialText" rows="4" required></textarea>
+                    </div>
+                </div>
+                <button type="submit">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
