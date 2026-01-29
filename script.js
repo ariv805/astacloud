@@ -259,13 +259,53 @@ const dataManager = {
             },
             {
                 id: 3,
-                name: "Domain .COM",
-                price: "Rp 120.000",
+                name: "Domain .online",
+                price: "Rp 40.000",
                 discount: 0,
                 type: "domain",
                 storage: "-",
                 bandwidth: "-",
-                features: ["Domain .COM", "Free WHOIS Protection", "DNS Management"]
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan"]
+            },
+            {
+                id: 4,
+                name: "Domain .store",
+                price: "Rp 75.000",
+                discount: 0,
+                type: "domain",
+                storage: "-",
+                bandwidth: "-",
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan"]
+            },
+            {
+                id: 5,
+                name: "Domain .Cloud",
+                price: "Rp 40.000",
+                discount: 0,
+                type: "domain",
+                storage: "-",
+                bandwidth: "-",
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan"]
+            },
+            {
+                id: 6,
+                name: "Domain .com",
+                price: "Rp 184.000",
+                discount: 0,
+                type: "domain",
+                storage: "-",
+                bandwidth: "-",
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan"]
+            },
+            {
+                id: 7,
+                name: "Domain .id",
+                price: "Rp 230.000",
+                discount: 0,
+                type: "domain",
+                storage: "-",
+                bandwidth: "-",
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan"]
             }
         ];
     },
