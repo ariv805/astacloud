@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTA CLOUD - Marketplace Terpercaya</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- Critical CSS Inline -->
+    <style>
+        /* Critical CSS for above-the-fold content */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+        
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1a5fb4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #1a5fb4 0%, #62a0ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .pt-20 {
+            padding-top: 5rem;
+        }
+        
+        .min-h-screen {
+            min-height: 100vh;
+        }
+        
+        /* Skeleton loading */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+    
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Defer Non-Critical CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" media="print" onload="this.media='all'">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Critical Content - Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo" onclick="showPage('home')">
+                    <img src="https://files.catbox.moe/ew2x0g.jpg" alt="Logo" loading="lazy">
+                    <span class="gradient-text">ASTA CLOUD</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                        <i data-lucide="sun" class="w-5 h-5" id="themeIcon"></i>
+                    </div>
+                    <div class="menu-toggle md:hidden flex flex-col cursor-pointer" id="menuToggle">
+                        <span class="w-6 h-0.5 bg-blue-600 my-1 rounded"></span>
+                        <span class="w-6 h-0.5 bg-blue-600 my-1 rounded"></span>
+                        <span class="w-6 h-0.5 bg-blue-600 my-1 rounded"></span>
+                    </div>
+                </div>
+                <ul class="hidden md:flex gap-6" id="navMenu">
+                    <li><a href="#" onclick="showPage('home')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="home" class="w-4 h-4"></i> Beranda</a></li>
+                    <li><a href="#" onclick="showPage('services')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="bell" class="w-4 h-4"></i> Layanan</a></li>
+                    <li><a href="#" onclick="showPage('products')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Produk</a></li>
+                    <li><a href="#" onclick="showPage('domain')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="globe" class="w-4 h-4"></i> Domain</a></li>
+                    <li><a href="#" onclick="showPage('testimonials')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="message-circle" class="w-4 h-4"></i> Testimoni</a></li>
+                    <li><a href="#" onclick="showLogin()" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="settings" class="w-4 h-4"></i> Login</a></li>
+                </ul>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="hidden md:hidden bg-white shadow-lg" id="mobileMenu">
+                <ul class="py-4 px-4 space-y-3">
+                    <li><a href="#" onclick="showPage('home')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="home" class="w-4 h-4"></i> Beranda</a></li>
+                    <li><a href="#" onclick="showPage('services')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="bell" class="w-4 h-4"></i> Layanan</a></li>
+                    <li><a href="#" onclick="showPage('products')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Produk</a></li>
+                    <li><a href="#" onclick="showPage('domain')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="globe" class="w-4 h-4"></i> Domain</a></li>
+                    <li><a href="#" onclick="showPage('testimonials')" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="message-circle" class="w-4 h-4"></i> Testimoni</a></li>
+                    <li><a href="#" onclick="showLogin()" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"><i data-lucide="settings" class="w-4 h-4"></i> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="pt-20 min-h-screen">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <!-- Hero Section with Slider -->
+            <div class="swiper mySwiper h-96 md:h-[500px]">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide bg-gradient-to-r from-blue-500 to-blue-300 text-white flex flex-col justify-center items-center text-center p-8">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-up">Selamat Datang di ASTA CLOUD</h1>
+                        <p class="text-lg md:text-xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="100">Solusi lengkap untuk kebutuhan digital dan teknologi Anda</p>
+                        <a href="#services" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors" data-aos="fade-up" data-aos-delay="200" onclick="showPage('services')">Jelajahi Layanan</a>
+                    </div>
+                    <div class="swiper-slide bg-gradient-to-r from-purple-500 to-pink-500 text-white flex flex-col justify-center items-center text-center p-8">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-up">Produk Berkualitas</h1>
+                        <p class="text-lg md:text-xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="100">Peralatan komputer dan aksesoris dengan kualitas terbaik</p>
+                        <a href="#products" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-purple-50 transition-colors" data-aos="fade-up" data-aos-delay="200" onclick="showPage('products')">Lihat Produk</a>
+                    </div>
+                    <div class="swiper-slide bg-gradient-to-r from-green-500 to-teal-500 text-white flex flex-col justify-center items-center text-center p-8">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-up">Layanan Profesional</h1>
+                        <p class="text-lg md:text-xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="100">Desain, editing video, dan perbaikan device</p>
+                        <a href="#services" class="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition-colors" data-aos="fade-up" data-aos-delay="200" onclick="showPage('services')">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Mengapa Memilih Kami</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" data-aos="fade-up" data-aos-delay="100" onclick="showPage('services')">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-300 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i data-lucide="bell" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-center">Layanan Profesional</h3>
+                        <p class="text-gray-600 text-center">Berbagai layanan profesional untuk desain, editing video, dan perbaikan device</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" data-aos="fade-up" data-aos-delay="200" onclick="showPage('products')">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i data-lucide="laptop" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-center">Produk Berkualitas</h3>
+                        <p class="text-gray-600 text-center">Peralatan komputer dan aksesoris dengan kualitas terbaik</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" data-aos="fade-up" data-aos-delay="300" onclick="showPage('domain')">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i data-lucide="globe" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-center">Domain & Hosting</h3>
+                        <p class="text-gray-600 text-center">Solusi domain dan hosting untuk kebutuhan website Anda</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Page -->
+        <section id="services" class="page hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Layanan Kami</h2>
+                <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Services will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Page -->
+        <section id="products" class="page hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Produk Kami</h2>
+                <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Domain Page -->
+        <section id="domain" class="page hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Domain & Hosting</h2>
+                <div id="domainGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Domains will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Page -->
+        <section id="testimonials" class="page hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Testimoni Pelanggan</h2>
+                <div class="swiper testimonialSwiper">
+                    <div id="testimonialsContainer" class="swiper-wrapper">
+                        <!-- Testimonials will be dynamically loaded here -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2026 ASTA CLOUD. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <!-- WhatsApp Icon -->
+                    <a href="https://wa.me/6285815185245" target="_blank" class="social-icon" title="WhatsApp">
+                        <i data-lucide="messages-square" class="w-5 h-5"></i>
+                    </a>
+                    <!-- TikTok Icon -->
+                    <a href="https://www.tiktok.com/@astacloud6?_r=1&_t=ZS-93RJptOpLhF" target="_blank" class="social-icon" title="TikTok">
+                        <i data-lucide="video" class="w-5 h-5"></i>
+                    </a>
+                    <!-- Instagram Icon -->
+                    <a href="https://www.instagram.com/asta.cloud?igsh=OW52cGVyYnI1MTBp" target="_blank" class="social-icon" title="Instagram">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container" style="display: none;">
+        <div class="login-form">
+            <h2 class="text-2xl font-bold mb-6 text-center gradient-text">Login</h2>
+            <form id="loginForm">
+                <div class="mb-4">
+                    <label for="username" class="block text-gray-700 mb-2">Username</label>
+                    <input type="text" id="username" name="username" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-gray-700 mb-2">Password</label>
+                    <input type="password" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-blue-300 text-white py-2 rounded-md font-semibold hover:shadow-lg transition-shadow">Login</button>
+                <p class="text-center mt-4 text-gray-600">
+                    <a href="#" onclick="showMainWebsite()" class="text-blue-500 hover:underline">Kembali ke Website</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard">
+        <!-- Sidebar -->
+        <div class="admin-sidebar" id="adminSidebar">
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-6">Admin Dashboard</h2>
+                <ul class="space-y-2">
+                    <li><a href="#" onclick="showAdminSection('dashboard')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="layout-dashboard" class="inline w-4 h-4 mr-2"></i> Dashboard</a></li>
+                    <li><a href="#" onclick="showAdminSection('products')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="shopping-bag" class="inline w-4 h-4 mr-2"></i> Kelola Produk</a></li>
+                    <li><a href="#" onclick="showAdminSection('services')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="bell" class="inline w-4 h-4 mr-2"></i> Kelola Layanan</a></li>
+                    <li><a href="#" onclick="showAdminSection('domains')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="globe" class="inline w-4 h-4 mr-2"></i> Kelola Domain</a></li>
+                    <li><a href="#" onclick="showAdminSection('testimonials')" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="message-circle" class="inline w-4 h-4 mr-2"></i> Kelola Testimoni</a></li>
+                    <li><a href="#" onclick="logout()" class="block py-2 px-4 rounded hover:bg-blue-700 transition-colors"><i data-lucide="log-out" class="inline w-4 h-4 mr-2"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="adminMenuToggle" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <!-- Dashboard Section -->
+            <div id="adminDashboardSection" class="admin-section">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Dashboard</h1>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-blue-500 text-white mr-4">
+                                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Produk</p>
+                                    <p class="text-2xl font-bold" id="totalProducts">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-green-500 text-white mr-4">
+                                    <i data-lucide="bell" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Layanan</p>
+                                    <p class="text-2xl font-bold" id="totalServices">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-purple-500 text-white mr-4">
+                                    <i data-lucide="globe" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Domain</p>
+                                    <p class="text-2xl font-bold" id="totalDomains">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-orange-50 p-6 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-orange-500 text-white mr-4">
+                                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Total Testimoni</p>
+                                    <p class="text-2xl font-bold" id="totalTestimonials">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="adminProductsSection" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h1 class="text-2xl font-bold mb-6">Kelola Produk</h1>
+                    
+                    <!-- Add Product Form -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Produk Baru</h2>
+                        <form id="addProductForm" class="admin-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="productName">Nama Produk</label>
+                                    <input type="text" id="productName" required>
+                                </div>
+                                <div>
+                                    <label for="productPrice">Harga Produk</label>
+                                    <input type="text" id="productPrice" required>
+                                </div>
+                                <div>
+                                    <label for="productDiscount">Diskon (%)</label>
+                                    <input type="number" id="productDiscount" min="0" max="100" value="0">
+                                </div>
+                                <div>
+                                    <label for="productImage">URL Gambar Produk</label>
+                                    <input type="text" id="productImage" required>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="productDescription">Deskripsi Produk</label>
+                                    <textarea id="productDescription" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit">Tambah Produk</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Products Table -->
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Daftar Produk</h2>
+                        <div class="overflow-x-auto">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Produk</th>
+                                        <th>Harga</th>
+                                        <th>Diskon</th>
+                                        <th>Deskripsi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTableBody">
+                                    <!-- Products will be dynamically loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other admin sections remain the same -->
+        </div>
+    </div>
+
+    <!-- Edit Modals -->
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-xl font-bold">Edit Produk</h2>
+                <button class="close-modal" onclick="closeModal('editProductModal')">&times;</button>
+            </div>
+            <form id="editProductForm" class="admin-form">
+                <input type="hidden" id="editProductId">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="editProductName">Nama Produk</label>
+                        <input type="text" id="editProductName" required>
+                    </div>
+                    <div>
+                        <label for="editProductPrice">Harga Produk</label>
+                        <input type="text" id="editProductPrice" required>
+                    </div>
+                    <div>
+                        <label for="editProductDiscount">Diskon (%)</label>
+                        <input type="number" id="editProductDiscount" min="0" max="100">
+                    </div>
+                    <div>
+                        <label for="editProductImage">URL Gambar Produk</label>
+                        <input type="text" id="editProductImage" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="editProductDescription">Deskripsi Produk</label>
+                        <textarea id="editProductDescription" rows="3"></textarea>
+                    </div>
+                </div>
+                <button type="submit">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Other modals remain the same -->
+
+    <!-- Optimized Script Loading -->
+    <script>
+        // Load critical scripts immediately
+        window.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide Icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            // Hide loader quickly
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                if (loader) loader.classList.add('hidden');
+            }, 300);
+        });
+    </script>
+    
+    <!-- Load non-critical scripts with defer -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
