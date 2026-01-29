@@ -641,8 +641,8 @@
                             <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto">
                                 <i data-lucide="globe" class="w-8 h-8 text-white"></i>
                             </div>
-                            <h3 class="text-xl font-semibold mb-4 text-center">Domain & Hosting</h3>
-                            <p class="text-gray-600 text-center">Solusi domain dan hosting untuk kebutuhan website Anda</p>
+                            <h3 class="text-xl font-semibold mb-4 text-center">Domain</h3>
+                            <p class="text-gray-600 text-center">Solusi domain untuk kebutuhan website Anda</p>
                         </div>
                     </div>
                 </div>
@@ -671,7 +671,7 @@
             <!-- Domain Page -->
             <section id="domain" class="page hidden">
                 <div class="container mx-auto px-4 py-16">
-                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Domain & Hosting</h2>
+                    <h2 class="text-3xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Domain</h2>
                     <div id="domainGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Domains will be dynamically loaded here -->
                     </div>
@@ -1399,41 +1399,41 @@
                     {
                         id: 1,
                         name: "Keyboard Mechanical",
-                        price: "Rp 350.000",
-                        discount: 10,
-                        image: "https://via.placeholder.com/400x300/1a5fb4/ffffff?text=Keyboard",
+                        price: "Rp 60.000 - 120.000",
+                        discount: 0,
+                        image: "https://image2url.com/r2/default/images/1769590450832-267ca8d1-7113-49e2-88cf-fd9668ec4143.webp",
                         description: "Keyboard mechanical dengan switch blue yang nyaman untuk gaming dan mengetik"
                     },
                     {
                         id: 2,
-                        name: "Mouse Gaming",
-                        price: "Rp 150.000",
+                        name: "Mouse",
+                        price: "Rp 25.000 - 50.000",
                         discount: 0,
-                        image: "https://files.catbox.moe/0nv974.jpg",
-                        description: "Mouse gaming dengan DPI tinggi dan desain ergonomis"
+                        image: "https://image2url.com/r2/default/images/1769590491825-e14373da-c1f9-4cec-989d-cc0a7575ba68.jpg",
+                        description: "Mouse dengan DPI tinggi dan desain ergonomis"
                     },
                     {
                         id: 3,
-                        name: "Mouse Pad XXL",
-                        price: "Rp 75.000",
-                        discount: 15,
-                        image: "https://files.catbox.moe/rcc9r4.jpg",
+                        name: "Mouse Pad ",
+                        price: "Rp 10.000 -25.000",
+                        discount: ,
+                        image: "https://image2url.com/r2/default/images/1769590524899-6f8d84e5-2d9a-4e0c-ba41-cea7612929dd.jpg",
                         description: "Mouse pad ekstra besar dengan permukaan halus untuk presisi maksimal"
                     },
                     {
                         id: 4,
-                        name: "Headset Gaming",
-                        price: "Rp 200.000",
+                        name: "Headset",
+                        price: "Rp 50.000 - 100.000",
                         discount: 0,
-                        image: "https://via.placeholder.com/400x300/62a0ea/ffffff?text=Headset",
+                        image: "https://image2url.com/r2/default/images/1769590563753-cfc769c6-2cd8-425b-805b-98e44a8ed1f0.png",
                         description: "Headset gaming dengan kualitas suara jernih dan microphone noise-cancelling"
                     },
                     {
                         id: 5,
                         name: "Webcam HD",
-                        price: "Rp 300.000",
-                        discount: 20,
-                        image: "https://via.placeholder.com/400x300/1a5fb4/ffffff?text=Webcam",
+                        price: "Rp 80.000 - 150.000",
+                        discount: 0,
+                        image: "https://image2url.com/r2/default/images/1769590602521-c4f821d2-36f8-4147-98be-fb61ed011e17.jpg",
                         description: "Webcam HD 1080p untuk video conference dan streaming"
                     }
                 ];
@@ -1445,7 +1445,7 @@
                     {
                         id: 1,
                         name: "Jasa Desain",
-                        price: "Rp 50.000",
+                        price: "Rp 10.000 - 20.000",
                         discount: 0,
                         icon: "palette",
                         color: "blue",
@@ -1454,8 +1454,8 @@
                     {
                         id: 2,
                         name: "Jasa Edit Video",
-                        price: "Rp 100.000",
-                        discount: 10,
+                        price: "Rp  20.000 - 50.000",
+                        discount: 0,
                         icon: "video",
                         color: "purple",
                         description: "Editing video profesional untuk kebutuhan konten Anda"
@@ -1463,7 +1463,7 @@
                     {
                         id: 3,
                         name: "Pasang Tempered Glass",
-                        price: "Rp 25.000",
+                        price: "Rp  5.000",
                         discount: 0,
                         icon: "smartphone",
                         color: "green",
@@ -1472,7 +1472,7 @@
                     {
                         id: 4,
                         name: "Jasa Reset HP",
-                        price: "Rp 50.000",
+                        price: "Rp 20.000 - 40.000",
                         discount: 0,
                         icon: "refresh-cw",
                         color: "orange",
@@ -1486,64 +1486,24 @@
                 return [
                     {
                         id: 1,
-                        name: "Starter Package",
-                        price: "Rp 150.000",
+                        name: "Domain My.id",
+                        price: "Rp 15.000",
                         discount: 0,
-                        type: "package",
-                        storage: "5GB",
-                        bandwidth: "100GB",
-                        features: ["1 Domain", "5 Email Accounts", "Free SSL", "Backup Mingguan"]
-                    },
-                    {
-                        id: 2,
-                        name: "Business Package",
-                        price: "Rp 300.000",
-                        discount: 15,
-                        type: "package",
-                        storage: "20GB",
-                        bandwidth: "Unlimited",
-                        features: ["2 Domain", "20 Email Accounts", "Free SSL", "Backup Harian", "Priority Support"]
-                    },
-                    {
-                        id: 3,
-                        name: "Premium Domain .COM",
-                        price: "Rp 120.000",
-                        discount: 10,
                         type: "domain",
                         storage: "-",
                         bandwidth: "-",
-                        features: ["Domain .COM", "Free WHOIS Protection", "DNS Management"]
-                    }
+                        features: ["Domain .my.id","Free WHOIS Protection", "DNS Management"]
+                    },
+                    
+                    
                 ];
             },
             
             // Default testimonials if localStorage is empty
             getDefaultTestimonials: function() {
                 return [
-                    {
-                        id: 1,
-                        name: "Ahmad Rizki",
-                        rating: 5,
-                        image: "https://via.placeholder.com/80x80/1a5fb4/ffffff?text=AR",
-                        company: "PT. Tech Indonesia",
-                        text: "Pelayanan sangat memuaskan, produk berkualitas dan harga terjangkau. Saya sangat merekomendasikan ASTA CLOUD untuk kebutuhan teknologi Anda."
-                    },
-                    {
-                        id: 2,
-                        name: "Siti Nurhaliza",
-                        rating: 5,
-                        image: "https://via.placeholder.com/80x80/62a0ea/ffffff?text=SN",
-                        company: "Creative Studio",
-                        text: "Jasa desain yang sangat profesional dan hasilnya melebihi ekspektasi. Proses pengerjaan cepat dan komunikasi yang baik. Terima kasih ASTA CLOUD!"
-                    },
-                    {
-                        id: 3,
-                        name: "Budi Santoso",
-                        rating: 4.5,
-                        image: "https://via.placeholder.com/80x80/1a5fb4/ffffff?text=BS",
-                        company: "Gaming Community",
-                        text: "Keyboard mechanical yang saya beli sangat nyaman digunakan dan kualitasnya bagus. Harga juga lebih terjangkau dibanding toko lain. Recommended!"
-                    }
+                 
+                    
                 ];
             },
             
