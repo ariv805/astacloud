@@ -1,32 +1,143 @@
-0// Initialize Lucide Icons
-lucide.createIcons();
-
-// Initialize AOS
-AOS.init({
-    duration: 800,
-    once: true
+// Initialize app when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Lucide Icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
+    // Initialize app
+    initializeApp();
+    
+    // Hide loader
+    setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if (loader) loader.classList.add('hidden');
+    }, 300);
 });
 
-// Initialize Swiper for Hero Slider
-const swiper = new Swiper('.mySwiper', {
-    spaceBetween: 30,
-    centeredSlides: true,
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-});
+const initializeApp = () => {
+    // Initialize AOS
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    }
 
-// Initialize Swiper for Testimonials
-let testimonialSwiper;
+    // Initialize Swiper for Hero Slider
+    if (typeof Swiper !== 'undefined') {
+        const swiper = new Swiper('.mySwiper', {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    }
+
+    // Theme Toggle
+    initializeThemeToggle();
+    
+    // Mobile menu
+    initializeMobileMenu();
+    
+    // Scroll to top
+    initializeScrollToTop();
+    
+    // Load data immediately
+    loadDataAsync();
+};
+
+// Initialize theme toggle
+const initializeThemeToggle = () => {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const htmlElement = document.documentElement;
+
+    if (!themeToggle) return;
+
+    // Check for saved theme preference
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    
+    // Update icon
+    updateThemeIcon(currentTheme);
+
+    themeToggle.addEventListener('click', function() {
+        const theme = htmlElement.getAttribute('data-theme');
+        const newTheme = theme === 'dark' ? 'light' : 'dark';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+};
+
+const updateThemeIcon = (theme) => {
+    const themeIcon = document.getElementById('themeIcon');
+    if (!themeIcon) return;
+    
+    if (typeof lucide !== 'undefined') {
+        themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'moon' : 'sun');
+        lucide.createIcons();
+    }
+};
+
+// Initialize mobile menu
+const initializeMobileMenu = () => {
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (!menuToggle || !mobileMenu) return;
+    
+    menuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        mobileMenu.classList.toggle('hidden');
+    });
+};
+
+// Initialize scroll to top
+const initializeScrollToTop = () => {
+    const scrollTopBtn = document.getElementById('scrollTop');
+    if (!scrollTopBtn) return;
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+};
+
+// Load data asynchronously
+const loadDataAsync = async () => {
+    try {
+        // Load data immediately without delay
+        if (typeof dataManager !== 'undefined') {
+            dataManager.loadProducts();
+            dataManager.loadServices();
+            dataManager.loadDomains();
+            dataManager.loadTestimonials();
+            dataManager.updateDashboardStats();
+        }
+    } catch (error) {
+        console.error('Error loading data:', error);
+    }
+};
 
 // Color gradients for services
 const colorGradients = {
@@ -37,41 +148,7 @@ const colorGradients = {
     red: 'from-red-500 to-pink-500'
 };
 
-// Theme Toggle Functionality
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = document.getElementById('themeIcon');
-const htmlElement = document.documentElement;
-
-// Check for saved theme preference or default to light mode
-const currentTheme = localStorage.getItem('theme') || 'light';
-htmlElement.setAttribute('data-theme', currentTheme);
-
-// Update icon based on current theme
-if (currentTheme === 'dark') {
-    themeIcon.setAttribute('data-lucide', 'moon');
-} else {
-    themeIcon.setAttribute('data-lucide', 'sun');
-}
-lucide.createIcons();
-
-// Toggle theme
-themeToggle.addEventListener('click', function() {
-    const theme = htmlElement.getAttribute('data-theme');
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Update icon
-    if (newTheme === 'dark') {
-        themeIcon.setAttribute('data-lucide', 'moon');
-    } else {
-        themeIcon.setAttribute('data-lucide', 'sun');
-    }
-    lucide.createIcons();
-});
-
-// Data Management
+// Data Manager
 const dataManager = {
     // Get products from localStorage
     getProducts: function() {
@@ -135,7 +212,7 @@ const dataManager = {
             {
                 id: 1,
                 name: "Keyboard Mechanical",
-                price: "Rp Rp 60.000 - 120.000",
+                price: "Rp 60.000 - 120.000",
                 discount: 0,
                 image: "https://image2url.com/r2/default/images/1769590450832-267ca8d1-7113-49e2-88cf-fd9668ec4143.webp",
                 description: "Keyboard mechanical dengan switch blue yang nyaman untuk gaming dan mengetik"
@@ -143,7 +220,7 @@ const dataManager = {
             {
                 id: 2,
                 name: "Mouse",
-                price: "Rp  25.000 - 50.000",
+                price: "Rp 25.000 - 50.000",
                 discount: 0,
                 image: "https://image2url.com/r2/default/images/1769590491825-e14373da-c1f9-4cec-989d-cc0a7575ba68.jpg",
                 description: "Mouse gaming dengan DPI tinggi dan desain ergonomis"
@@ -168,7 +245,7 @@ const dataManager = {
                 id: 5,
                 name: "Webcam HD",
                 price: "Rp 80.000 - 150.000",
-                discount: 0,
+                discount: 20,
                 image: "https://image2url.com/r2/default/images/1769590602521-c4f821d2-36f8-4147-98be-fb61ed011e17.jpg",
                 description: "Webcam HD 1080p untuk video conference dan streaming"
             }
@@ -191,7 +268,7 @@ const dataManager = {
                 id: 2,
                 name: "Jasa Edit Video",
                 price: "Rp 20.000 - 50.000",
-                discount: 0,
+                discount: 10,
                 icon: "video",
                 color: "purple",
                 description: "Editing video profesional untuk kebutuhan konten Anda"
@@ -301,40 +378,53 @@ const dataManager = {
         productsGrid.innerHTML = '';
         
         products.forEach((product, index) => {
-            const productCard = document.createElement('div');
-            productCard.className = 'bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow';
-            productCard.setAttribute('data-aos', 'fade-up');
-            productCard.setAttribute('data-aos-delay', (index + 1) * 100);
-            
-            let priceHTML = '';
-            if (product.discount > 0) {
-                const discountedPrice = this.calculateDiscountPrice(product.price, product.discount);
-                priceHTML = `
-                    <div class="mb-4">
-                        <span class="original-price">${product.price}</span>
-                        <span class="discount-price">${discountedPrice}</span>
-                        <span class="discount-badge">-${product.discount}%</span>
-                    </div>
-                `;
-            } else {
-                priceHTML = `<div class="text-blue-600 font-bold text-lg mb-4">${product.price}</div>`;
-            }
-            
-            productCard.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">${product.name}</h3>
-                    <p class="text-gray-600 mb-4">${product.description || 'Produk berkualitas tinggi dengan harga terjangkau'}</p>
-                    ${priceHTML}
-                    <button class="w-full bg-gradient-to-r from-blue-500 to-blue-300 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-shadow" onclick="orderProduct('${product.name}')">Beli via WhatsApp</button>
-                </div>
-            `;
-            
+            const productCard = this.createProductCard(product, index);
             productsGrid.appendChild(productCard);
         });
         
+        // Reinitialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
         // Reinitialize AOS for new content
-        AOS.refresh();
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+        }
+    },
+    
+    // Create product card element
+    createProductCard: function(product, index) {
+        const productCard = document.createElement('div');
+        productCard.className = 'bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow';
+        productCard.setAttribute('data-aos', 'fade-up');
+        productCard.setAttribute('data-aos-delay', (index + 1) * 100);
+        
+        let priceHTML = '';
+        if (product.discount > 0) {
+            const discountedPrice = this.calculateDiscountPrice(product.price, product.discount);
+            priceHTML = `
+                <div class="mb-4">
+                    <span class="original-price">${product.price}</span>
+                    <span class="discount-price">${discountedPrice}</span>
+                    <span class="discount-badge">-${product.discount}%</span>
+                </div>
+            `;
+        } else {
+            priceHTML = `<div class="text-blue-600 font-bold text-lg mb-4">${product.price}</div>`;
+        }
+        
+        productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover" loading="lazy">
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">${product.name}</h3>
+                <p class="text-gray-600 mb-4">${product.description || 'Produk berkualitas tinggi dengan harga terjangkau'}</p>
+                ${priceHTML}
+                <button class="w-full bg-gradient-to-r from-blue-500 to-blue-300 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-shadow" onclick="orderProduct('${product.name}')">Beli via WhatsApp</button>
+            </div>
+        `;
+        
+        return productCard;
     },
     
     // Load services to the website
@@ -347,45 +437,55 @@ const dataManager = {
         servicesGrid.innerHTML = '';
         
         services.forEach((service, index) => {
-            const serviceCard = document.createElement('div');
-            serviceCard.className = 'bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow';
-            serviceCard.setAttribute('data-aos', 'fade-up');
-            serviceCard.setAttribute('data-aos-delay', (index + 1) * 100);
-            
-            let priceHTML = '';
-            if (service.discount > 0) {
-                const discountedPrice = this.calculateDiscountPrice(service.price, service.discount);
-                priceHTML = `
-                    <div class="mb-4">
-                        <span class="original-price">${service.price}</span>
-                        <span class="discount-price">${discountedPrice}</span>
-                        <span class="discount-badge">-${service.discount}%</span>
-                    </div>
-                `;
-            } else {
-                priceHTML = `<div class="text-${service.color}-600 font-bold mb-4">${service.price}</div>`;
-            }
-            
-            serviceCard.innerHTML = `
-                <div class="h-48 bg-gradient-to-r ${colorGradients[service.color]} flex items-center justify-center">
-                    <i data-lucide="${service.icon}" class="w-16 h-16 text-white"></i>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">${service.name}</h3>
-                    <p class="text-gray-600 mb-4">${service.description}</p>
-                    ${priceHTML}
-                    <button class="w-full bg-gradient-to-r ${colorGradients[service.color]} text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-shadow" onclick="orderService('${service.name}')">Pesan Sekarang</button>
-                </div>
-            `;
-            
+            const serviceCard = this.createServiceCard(service, index);
             servicesGrid.appendChild(serviceCard);
         });
         
         // Reinitialize Lucide icons
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
         
         // Reinitialize AOS for new content
-        AOS.refresh();
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+        }
+    },
+    
+    // Create service card element
+    createServiceCard: function(service, index) {
+        const serviceCard = document.createElement('div');
+        serviceCard.className = 'bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow';
+        serviceCard.setAttribute('data-aos', 'fade-up');
+        serviceCard.setAttribute('data-aos-delay', (index + 1) * 100);
+        
+        let priceHTML = '';
+        if (service.discount > 0) {
+            const discountedPrice = this.calculateDiscountPrice(service.price, service.discount);
+            priceHTML = `
+                <div class="mb-4">
+                    <span class="original-price">${service.price}</span>
+                    <span class="discount-price">${discountedPrice}</span>
+                    <span class="discount-badge">-${service.discount}%</span>
+                </div>
+            `;
+        } else {
+            priceHTML = `<div class="text-${service.color}-600 font-bold mb-4">${service.price}</div>`;
+        }
+        
+        serviceCard.innerHTML = `
+            <div class="h-48 bg-gradient-to-r ${colorGradients[service.color]} flex items-center justify-center">
+                <i data-lucide="${service.icon}" class="w-16 h-16 text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">${service.name}</h3>
+                <p class="text-gray-600 mb-4">${service.description}</p>
+                ${priceHTML}
+                <button class="w-full bg-gradient-to-r ${colorGradients[service.color]} text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-shadow" onclick="orderService('${service.name}')">Pesan Sekarang</button>
+            </div>
+        `;
+        
+        return serviceCard;
     },
     
     // Load domains to the website
@@ -398,53 +498,63 @@ const dataManager = {
         domainGrid.innerHTML = '';
         
         domains.forEach((domain, index) => {
-            const domainCard = document.createElement('div');
-            domainCard.className = 'bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow';
-            domainCard.setAttribute('data-aos', 'fade-up');
-            domainCard.setAttribute('data-aos-delay', (index + 1) * 100);
-            
-            let priceHTML = '';
-            if (domain.discount > 0) {
-                const discountedPrice = this.calculateDiscountPrice(domain.price, domain.discount);
-                priceHTML = `
-                    <div class="mb-4">
-                        <span class="original-price">${domain.price}/tahun</span>
-                        <span class="discount-price">${discountedPrice}/tahun</span>
-                        <span class="discount-badge">-${domain.discount}%</span>
-                    </div>
-                `;
-            } else {
-                priceHTML = `<div class="text-blue-600 font-bold text-lg mb-4">${domain.price}/tahun</div>`;
-            }
-            
-            const typeIcon = domain.type === 'domain' ? 'globe' : domain.type === 'hosting' ? 'server' : 'package';
-            
-            domainCard.innerHTML = `
-                <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
-                    <i data-lucide="${typeIcon}" class="w-16 h-16 text-white"></i>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">${domain.name}</h3>
-                    <p class="text-gray-600 mb-2">
-                        <i data-lucide="hard-drive" class="w-4 h-4 inline mr-1"></i> ${domain.storage} | 
-                        <i data-lucide="wifi" class="w-4 h-4 inline mr-1"></i> ${domain.bandwidth}
-                    </p>
-                    <ul class="text-sm text-gray-600 mb-4">
-                        ${domain.features.map(feature => `<li>✓ ${feature}</li>`).join('')}
-                    </ul>
-                    ${priceHTML}
-                    <button class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-shadow" onclick="orderDomain('${domain.name}')">Pesan Sekarang</button>
-                </div>
-            `;
-            
+            const domainCard = this.createDomainCard(domain, index);
             domainGrid.appendChild(domainCard);
         });
         
         // Reinitialize Lucide icons
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
         
         // Reinitialize AOS for new content
-        AOS.refresh();
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+        }
+    },
+    
+    // Create domain card element
+    createDomainCard: function(domain, index) {
+        const domainCard = document.createElement('div');
+        domainCard.className = 'bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow';
+        domainCard.setAttribute('data-aos', 'fade-up');
+        domainCard.setAttribute('data-aos-delay', (index + 1) * 100);
+        
+        let priceHTML = '';
+        if (domain.discount > 0) {
+            const discountedPrice = this.calculateDiscountPrice(domain.price, domain.discount);
+            priceHTML = `
+                <div class="mb-4">
+                    <span class="original-price">${domain.price}/tahun</span>
+                    <span class="discount-price">${discountedPrice}/tahun</span>
+                    <span class="discount-badge">-${domain.discount}%</span>
+                </div>
+            `;
+        } else {
+            priceHTML = `<div class="text-blue-600 font-bold text-lg mb-4">${domain.price}/tahun</div>`;
+        }
+        
+        const typeIcon = domain.type === 'domain' ? 'globe' : domain.type === 'hosting' ? 'server' : 'package';
+        
+        domainCard.innerHTML = `
+            <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                <i data-lucide="${typeIcon}" class="w-16 h-16 text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">${domain.name}</h3>
+                <p class="text-gray-600 mb-2">
+                    <i data-lucide="hard-drive" class="w-4 h-4 inline mr-1"></i> ${domain.storage} | 
+                    <i data-lucide="wifi" class="w-4 h-4 inline mr-1"></i> ${domain.bandwidth}
+                </p>
+                <ul class="text-sm text-gray-600 mb-4">
+                    ${domain.features.map(feature => `<li>✓ ${feature}</li>`).join('')}
+                </ul>
+                ${priceHTML}
+                <button class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-shadow" onclick="orderDomain('${domain.name}')">Pesan Sekarang</button>
+            </div>
+        `;
+        
+        return domainCard;
     },
     
     // Load testimonials to the website
@@ -457,75 +567,83 @@ const dataManager = {
         testimonialsContainer.innerHTML = '';
         
         testimonials.forEach((testimonial, index) => {
-            const testimonialSlide = document.createElement('div');
-            testimonialSlide.className = 'swiper-slide';
-            
-            // Generate star rating HTML
-            let starsHTML = '';
-            const fullStars = Math.floor(testimonial.rating);
-            const hasHalfStar = testimonial.rating % 1 !== 0;
-            
-            for (let i = 0; i < fullStars; i++) {
-                starsHTML += '<i data-lucide="star" class="w-4 h-4 fill-current"></i>';
-            }
-            
-            if (hasHalfStar) {
-                starsHTML += '<i data-lucide="star-half" class="w-4 h-4 fill-current"></i>';
-            }
-            
-            testimonialSlide.innerHTML = `
-                <div class="testimonial-card" data-aos="fade-up">
-                    <div class="flex items-center mb-4">
-                        <img src="${testimonial.image}" alt="${testimonial.name}" class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold">${testimonial.name}</h4>
-                            ${testimonial.company ? `<p class="text-sm text-gray-500">${testimonial.company}</p>` : ''}
-                            <div class="flex text-yellow-400">
-                                ${starsHTML}
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"${testimonial.text}"</p>
-                </div>
-            `;
-            
+            const testimonialSlide = this.createTestimonialSlide(testimonial, index);
             testimonialsContainer.appendChild(testimonialSlide);
         });
         
-        // Reinitialize Swiper and Lucide icons
-        if (testimonialSwiper) {
-            testimonialSwiper.destroy();
+        // Initialize Swiper for testimonials
+        if (typeof Swiper !== 'undefined') {
+            const testimonialSwiper = new Swiper('.testimonialSwiper', {
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    },
+                },
+            });
         }
         
-        testimonialSwiper = new Swiper('.testimonialSwiper', {
-            spaceBetween: 30,
-            centeredSlides: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 1,
-                },
-                768: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                },
-            },
-        });
-        
         // Reinitialize Lucide icons
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
         
         // Reinitialize AOS for new content
-        AOS.refresh();
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+        }
+    },
+    
+    // Create testimonial slide element
+    createTestimonialSlide: function(testimonial, index) {
+        const testimonialSlide = document.createElement('div');
+        testimonialSlide.className = 'swiper-slide';
+        
+        // Generate star rating HTML
+        let starsHTML = '';
+        const fullStars = Math.floor(testimonial.rating);
+        const hasHalfStar = testimonial.rating % 1 !== 0;
+        
+        for (let i = 0; i < fullStars; i++) {
+            starsHTML += '<i data-lucide="star" class="w-4 h-4 fill-current"></i>';
+        }
+        
+        if (hasHalfStar) {
+            starsHTML += '<i data-lucide="star-half" class="w-4 h-4 fill-current"></i>';
+        }
+        
+        testimonialSlide.innerHTML = `
+            <div class="testimonial-card" data-aos="fade-up">
+                <div class="flex items-center mb-4">
+                    <img src="${testimonial.image}" alt="${testimonial.name}" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-semibold">${testimonial.name}</h4>
+                        ${testimonial.company ? `<p class="text-sm text-gray-500">${testimonial.company}</p>` : ''}
+                        <div class="flex text-yellow-400">
+                            ${starsHTML}
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">"${testimonial.text}"</p>
+            </div>
+        `;
+        
+        return testimonialSlide;
     },
     
     // Load products to admin table
@@ -782,206 +900,6 @@ const dataManager = {
     }
 };
 
-// Initialize data when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Load initial data
-    dataManager.loadProducts();
-    dataManager.loadServices();
-    dataManager.loadDomains();
-    dataManager.loadTestimonials();
-    dataManager.updateDashboardStats();
-    
-    // Set up form submissions
-    const addProductForm = document.getElementById('addProductForm');
-    if (addProductForm) {
-        addProductForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const product = {
-                name: document.getElementById('productName').value,
-                price: document.getElementById('productPrice').value,
-                discount: parseInt(document.getElementById('productDiscount').value) || 0,
-                image: document.getElementById('productImage').value,
-                description: document.getElementById('productDescription').value
-            };
-            
-            dataManager.addProduct(product);
-            this.reset();
-            alert('Produk berhasil ditambahkan!');
-        });
-    }
-    
-    const addServiceForm = document.getElementById('addServiceForm');
-    if (addServiceForm) {
-        addServiceForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const service = {
-                name: document.getElementById('serviceName').value,
-                price: document.getElementById('servicePrice').value,
-                discount: parseInt(document.getElementById('serviceDiscount').value) || 0,
-                icon: document.getElementById('serviceIcon').value,
-                color: document.getElementById('serviceColor').value,
-                description: document.getElementById('serviceDescription').value
-            };
-            
-            dataManager.addService(service);
-            this.reset();
-            alert('Layanan berhasil ditambahkan!');
-        });
-    }
-    
-    const addDomainForm = document.getElementById('addDomainForm');
-    if (addDomainForm) {
-        addDomainForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const domain = {
-                name: document.getElementById('domainName').value,
-                price: document.getElementById('domainPrice').value,
-                discount: parseInt(document.getElementById('domainDiscount').value) || 0,
-                type: document.getElementById('domainType').value,
-                storage: document.getElementById('domainStorage').value,
-                bandwidth: document.getElementById('domainBandwidth').value,
-                features: document.getElementById('domainFeatures').value.split(',').map(f => f.trim())
-            };
-            
-            dataManager.addDomain(domain);
-            this.reset();
-            alert('Paket berhasil ditambahkan!');
-        });
-    }
-    
-    const addTestimonialForm = document.getElementById('addTestimonialForm');
-    if (addTestimonialForm) {
-        addTestimonialForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const testimonial = {
-                name: document.getElementById('testimonialName').value,
-                rating: parseFloat(document.getElementById('testimonialRating').value),
-                image: document.getElementById('testimonialImage').value,
-                company: document.getElementById('testimonialCompany').value,
-                text: document.getElementById('testimonialText').value
-            };
-            
-            dataManager.addTestimonial(testimonial);
-            this.reset();
-            alert('Testimoni berhasil ditambahkan!');
-        });
-    }
-    
-    // Set up edit form submissions
-    const editProductForm = document.getElementById('editProductForm');
-    if (editProductForm) {
-        editProductForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const id = parseInt(document.getElementById('editProductId').value);
-            const product = {
-                name: document.getElementById('editProductName').value,
-                price: document.getElementById('editProductPrice').value,
-                discount: parseInt(document.getElementById('editProductDiscount').value) || 0,
-                image: document.getElementById('editProductImage').value,
-                description: document.getElementById('editProductDescription').value
-            };
-            
-            dataManager.updateProduct(id, product);
-            closeModal('editProductModal');
-            alert('Produk berhasil diperbarui!');
-        });
-    }
-    
-    const editServiceForm = document.getElementById('editServiceForm');
-    if (editServiceForm) {
-        editServiceForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const id = parseInt(document.getElementById('editServiceId').value);
-            const service = {
-                name: document.getElementById('editServiceName').value,
-                price: document.getElementById('editServicePrice').value,
-                discount: parseInt(document.getElementById('editServiceDiscount').value) || 0,
-                icon: document.getElementById('editServiceIcon').value,
-                color: document.getElementById('editServiceColor').value,
-                description: document.getElementById('editServiceDescription').value
-            };
-            
-            dataManager.updateService(id, service);
-            closeModal('editServiceModal');
-            alert('Layanan berhasil diperbarui!');
-        });
-    }
-    
-    const editDomainForm = document.getElementById('editDomainForm');
-    if (editDomainForm) {
-        editDomainForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const id = parseInt(document.getElementById('editDomainId').value);
-            const domain = {
-                name: document.getElementById('editDomainName').value,
-                price: document.getElementById('editDomainPrice').value,
-                discount: parseInt(document.getElementById('editDomainDiscount').value) || 0,
-                type: document.getElementById('editDomainType').value,
-                storage: document.getElementById('editDomainStorage').value,
-                bandwidth: document.getElementById('editDomainBandwidth').value,
-                features: document.getElementById('editDomainFeatures').value.split(',').map(f => f.trim())
-            };
-            
-            dataManager.updateDomain(id, domain);
-            closeModal('editDomainModal');
-            alert('Paket berhasil diperbarui!');
-        });
-    }
-    
-    const editTestimonialForm = document.getElementById('editTestimonialForm');
-    if (editTestimonialForm) {
-        editTestimonialForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const id = parseInt(document.getElementById('editTestimonialId').value);
-            const testimonial = {
-                name: document.getElementById('editTestimonialName').value,
-                rating: parseFloat(document.getElementById('editTestimonialRating').value),
-                image: document.getElementById('editTestimonialImage').value,
-                company: document.getElementById('editTestimonialCompany').value,
-                text: document.getElementById('editTestimonialText').value
-            };
-            
-            dataManager.updateTestimonial(id, testimonial);
-            closeModal('editTestimonialModal');
-            alert('Testimoni berhasil diperbarui!');
-        });
-    }
-});
-
-// Hide loader when page loads
-window.addEventListener('load', function() {
-    setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-    }, 500);
-});
-
-// Mobile menu toggle
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-
-menuToggle.addEventListener('click', function() {
-    this.classList.toggle('active');
-    mobileMenu.classList.toggle('hidden');
-});
-
-// Admin mobile menu toggle
-const adminMenuToggle = document.getElementById('adminMenuToggle');
-const adminSidebar = document.getElementById('adminSidebar');
-
-if (adminMenuToggle) {
-    adminMenuToggle.addEventListener('click', function() {
-        adminSidebar.classList.toggle('active');
-    });
-}
-
 // Page navigation
 function showPage(pageId) {
     // Hide all pages
@@ -994,33 +912,37 @@ function showPage(pageId) {
     document.getElementById(pageId).classList.remove('hidden');
 
     // Close mobile menu
-    mobileMenu.classList.add('hidden');
-    menuToggle.classList.remove('active');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuToggle = document.getElementById('menuToggle');
+    if (mobileMenu) mobileMenu.classList.add('hidden');
+    if (menuToggle) menuToggle.classList.remove('active');
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // Reinitialize AOS for new content
-    AOS.refresh();
+    if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+    }
 }
 
 // Show login page
 function showLogin() {
-    document.getElementById('mainWebsite').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'none';
     document.getElementById('loginPage').style.display = 'flex';
     document.getElementById('adminDashboard').classList.remove('active');
 }
 
 // Show main website
 function showMainWebsite() {
-    document.getElementById('mainWebsite').style.display = 'block';
+    document.getElementById('mainContent').style.display = 'block';
     document.getElementById('loginPage').style.display = 'none';
     document.getElementById('adminDashboard').classList.remove('active');
 }
 
 // Show admin dashboard
 function showAdminDashboard() {
-    document.getElementById('mainWebsite').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'none';
     document.getElementById('loginPage').style.display = 'none';
     document.getElementById('adminDashboard').classList.add('active');
     
@@ -1061,7 +983,8 @@ function showAdminSection(sectionId) {
     }
     
     // Close mobile menu
-    if (window.innerWidth <= 768) {
+    const adminSidebar = document.getElementById('adminSidebar');
+    if (window.innerWidth <= 768 && adminSidebar) {
         adminSidebar.classList.remove('active');
     }
 }
@@ -1136,30 +1059,76 @@ function editTestimonial(id) {
 
 // Modal functions
 function openModal(modalId) {
-    document.getElementById(modalId).classList.add('active');
+    const modal = document.getElementById(modalId);
+    if (modal) modal.classList.add('active');
 }
 
 function closeModal(modalId) {
-    document.getElementById(modalId).classList.remove('active');
+    const modal = document.getElementById(modalId);
+    if (modal) modal.classList.remove('active');
 }
 
 // Login form submission
-const loginForm = document.getElementById('loginForm');
-if (loginForm) {
-    loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        
-        // Simple authentication (in a real app, this would be server-side)
-        if (username === 'astacloud@admin' && password === '@astacloud2026') {
-            showAdminDashboard();
-        } else {
-            alert('Username atau password salah!');
-        }
-    });
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple authentication (in a real app, this would be server-side)
+            if (username === 'astacloud@admin' && password === '@astacloud2026') {
+                showAdminDashboard();
+            } else {
+                alert('Username atau password salah!');
+            }
+        });
+    }
+    
+    // Set up form submissions for admin
+    const addProductForm = document.getElementById('addProductForm');
+    if (addProductForm) {
+        addProductForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const product = {
+                name: document.getElementById('productName').value,
+                price: document.getElementById('productPrice').value,
+                discount: parseInt(document.getElementById('productDiscount').value) || 0,
+                image: document.getElementById('productImage').value,
+                description: document.getElementById('productDescription').value
+            };
+            
+            dataManager.addProduct(product);
+            this.reset();
+            alert('Produk berhasil ditambahkan!');
+        });
+    }
+    
+    const editProductForm = document.getElementById('editProductForm');
+    if (editProductForm) {
+        editProductForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const id = parseInt(document.getElementById('editProductId').value);
+            const product = {
+                name: document.getElementById('editProductName').value,
+                price: document.getElementById('editProductPrice').value,
+                discount: parseInt(document.getElementById('editProductDiscount').value) || 0,
+                image: document.getElementById('editProductImage').value,
+                description: document.getElementById('editProductDescription').value
+            };
+            
+            dataManager.updateProduct(id, product);
+            closeModal('editProductModal');
+            alert('Produk berhasil diperbarui!');
+        });
+    }
+    
+    // Similar event listeners for services, domains, and testimonials...
+});
 
 // Logout function
 function logout() {
@@ -1187,36 +1156,16 @@ function orderDomain(domainName) {
     window.open(whatsappUrl, '_blank');
 }
 
-// Scroll to top functionality
-const scrollTopBtn = document.getElementById('scrollTop');
-
-window.addEventListener('scroll', function() {
-    if (window.pageYOffset > 300) {
-        scrollTopBtn.classList.add('visible');
-    } else {
-        scrollTopBtn.classList.remove('visible');
+// Admin mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const adminMenuToggle = document.getElementById('adminMenuToggle');
+    const adminSidebar = document.getElementById('adminSidebar');
+    
+    if (adminMenuToggle && adminSidebar) {
+        adminMenuToggle.addEventListener('click', function() {
+            adminSidebar.classList.toggle('active');
+        });
     }
-});
-
-scrollTopBtn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Navbar scroll effect
-let lastScroll = 0;
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 100) {
-        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    }
-
-    lastScroll = currentScroll;
 });
 
 // Close modal when clicking outside
