@@ -325,24 +325,24 @@ const dataManager = {
                 id: 1,
                 name: "Rizki",
                 rating: 5,
-                image: "https://via.placeholder.com/80x80/1a5fb4/ffffff?text=AR",
-                company: "PT. Tech Indonesia",
+                image: "https://image2url.com/r2/default/images/1769698867694-69f9f4f4-813a-4d2f-9cc4-8ed8d5e52003.jpeg",
+                company: "Pelanggan setia",
                 text: "Pelayanan sangat memuaskan, produk berkualitas dan harga terjangkau. Saya sangat merekomendasikan ASTA CLOUD untuk kebutuhan teknologi Anda."
             },
             {
                 id: 2,
                 name: "Rama",
                 rating: 5,
-                image: "https://via.placeholder.com/80x80/62a0ea/ffffff?text=SN",
-                company: "Creative Studio",
+                image: "https://image2url.com/r2/default/images/1769698867694-69f9f4f4-813a-4d2f-9cc4-8ed8d5e52003.jpeg",
+                company: "Pelanggan Jasa desain",
                 text: "Jasa desain yang sangat profesional dan hasilnya melebihi ekspektasi. Proses pengerjaan cepat dan komunikasi yang baik. Terima kasih ASTA CLOUD!"
             },
             {
                 id: 3,
                 name: "Zidan",
                 rating: 4.5,
-                image: "https://via.placeholder.com/80x80/1a5fb4/ffffff?text=BS",
-                company: "Gaming Community",
+                image: "https://image2url.com/r2/default/images/1769698867694-69f9f4f4-813a-4d2f-9cc4-8ed8d5e52003.jpeg",
+                company: "Pelanggan Produk aksesoris komputer",
                 text: "Keyboard mechanical yang saya beli sangat nyaman digunakan dan kualitasnya bagus. Harga juga lebih terjangkau dibanding toko lain. Recommended!"
             }
         ];
