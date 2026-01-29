@@ -180,6 +180,14 @@ const dataManager = {
                 image: "https://image2url.com/r2/default/images/1769590602521-c4f821d2-36f8-4147-98be-fb61ed011e17.jpg",
                 description: "Webcam HD 1080p untuk video conference dan streaming"
             }
+            {
+                id: 6,
+                name: "Temperglass",
+                price: "Rp 10.000 - 15.000",
+                discount: 0,
+                image: "https://image2url.com/r2/default/images/1769696487732-ec9aa4d4-579b-42cf-b699-d633edee93e2.jpg",
+                description: "Anti gores & benturan, jernih, sentuhan tetap halus."
+             }
         ];
     },
     
