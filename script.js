@@ -188,7 +188,14 @@ const dataManager = {
                 image: "https://image2url.com/r2/default/images/1769696487732-ec9aa4d4-579b-42cf-b699-d633edee93e2.jpg",
                 description: "Anti gores & benturan, jernih, sentuhan tetap halus."
             },
-            
+             {
+                id: 6,
+                name: "Casing all hp",
+                price: "Rp 15.000 - 30.000",
+                discount: 0,
+                image: "https://image2url.com/r2/default/images/1769698102908-a6e57c86-9399-4f31-8258-6989aa743f52.jpg",
+                description: "Casing standar, kualitas nggak sembarangan."
+            },
         ];
     },
     
@@ -230,7 +237,8 @@ const dataManager = {
                 icon: "refresh-cw",
                 color: "orange",
                 description: "Reset HP dengan aman dan data terjaga"
-            }
+            },
+            
         ];
     },
     
@@ -245,7 +253,7 @@ const dataManager = {
                 type: "domain",
                 storage: "-",
                 bandwidth: "-",
-                features: ["Domain .COM", "Free WHOIS Protection", "DNS Management"]
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan", "Cocok untuk nama server game,website,dll"]
             },
             {
                 id: 2,
@@ -255,7 +263,7 @@ const dataManager = {
                 type: "domain",
                 storage: "-",
                 bandwidth: "-",
-                features: ["Domain .COM", "Free WHOIS Protection", "DNS Management"]
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan", "Cocok untuk nama server game,website,dll"]
             },
             {
                 id: 3,
@@ -265,8 +273,8 @@ const dataManager = {
                 type: "domain",
                 storage: "-",
                 bandwidth: "-",
-                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan"]
-            },
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan", "Cocok untuk nama server game,website,dll"]
+           },
             {
                 id: 4,
                 name: "Domain .store",
@@ -275,7 +283,7 @@ const dataManager = {
                 type: "domain",
                 storage: "-",
                 bandwidth: "-",
-                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan"]
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan", "Cocok untuk nama server game,website,dll"]
             },
             {
                 id: 5,
@@ -285,7 +293,7 @@ const dataManager = {
                 type: "domain",
                 storage: "-",
                 bandwidth: "-",
-                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan"]
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan", "Cocok untuk nama server game,website,dll"]
             },
             {
                 id: 6,
@@ -295,8 +303,8 @@ const dataManager = {
                 type: "domain",
                 storage: "-",
                 bandwidth: "-",
-                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan"]
-            },
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan", "Cocok untuk nama server game,website,dll"]
+             },
             {
                 id: 7,
                 name: "Domain .id",
@@ -305,7 +313,7 @@ const dataManager = {
                 type: "domain",
                 storage: "-",
                 bandwidth: "-",
-                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan"]
+                features: ["Gratis Access cloudflare", "Masa aktif 1 Tahun penuh", "Bebas request nama domain sesuai keinginan", "Cocok untuk nama server game,website,dll"]
             }
         ];
     },
