@@ -147,7 +147,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-sm text-muted-foreground text-center md:text-left flex items-center gap-1"
           >
-            © 2025 ASTA CLOUD. Made with
+            © 2026 ASTA CLOUD. Made with
             <Heart className="w-4 h-4 text-red-500 fill-red-500" />
             in Indonesia
           </motion.p>
