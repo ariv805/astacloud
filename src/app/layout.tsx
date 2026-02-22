@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   keywords: ["ASTA CLOUD", "Marketplace", "Domain", "Hosting", "Desain", "Teknologi", "Produk Digital"],
   authors: [{ name: "ASTA CLOUD" }],
   icons: {
-    icon: "https://files.catbox.moe/ew2x0g.jpg",
+    icon: "https://image2url.com/r2/default/images/1771769196446-c72ec0aa-5f99-4546-88fc-ce31d5ef6cc9.jpg",
   },
   openGraph: {
     title: "ASTA CLOUD - Marketplace Terpercaya",
