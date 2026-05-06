@@ -12,46 +12,12 @@ import { X, ZoomIn, Tag, Banknote, FileText } from "lucide-react";
 const galleryItems = [
   {
     id: 1,
-    jenisPesanan: "Akun Netflix Premium",
-    harga: "Rp 15.000 / bulan",
-    deskripsi: "Sharing 4K UHD, garansi penuh 1 bulan.",
-    image: "https://placehold.co/600x400/0f1f3d/60a5fa?text=Netflix",
+    jenisPesanan: "Temperglase Hp",
+    harga: "Rp 15.000",
+    deskripsi: "Jasa Ganti dan pasang temperglase By ASTA CLOUD",
+    image: "https://www.image2url.com/r2/default/images/1778067553109-5e2ef51f-6048-4cae-aa07-3cfcf6152f74.jpeg",
   },
-  {
-    id: 2,
-    jenisPesanan: "Akun Spotify Premium",
-    harga: "Rp 10.000 / bulan",
-    deskripsi: "Family plan, tanpa iklan, download offline.",
-    image: "https://placehold.co/600x400/0f1f3d/60a5fa?text=Spotify",
-  },
-  {
-    id: 3,
-    jenisPesanan: "Akun Canva Pro",
-    harga: "Rp 12.000 / bulan",
-    deskripsi: "Akses semua template premium & fitur brand kit.",
-    image: "https://placehold.co/600x400/0f1f3d/60a5fa?text=Canva+Pro",
-  },
-  {
-    id: 4,
-    jenisPesanan: "Akun YouTube Premium",
-    harga: "Rp 13.000 / bulan",
-    deskripsi: "",
-    image: "https://placehold.co/600x400/0f1f3d/60a5fa?text=YouTube",
-  },
-  {
-    id: 5,
-    jenisPesanan: "Akun ChatGPT Plus",
-    harga: "Rp 35.000 / bulan",
-    deskripsi: "GPT-4o, DALL·E, browsing & plugins aktif.",
-    image: "https://placehold.co/600x400/0f1f3d/60a5fa?text=ChatGPT+Plus",
-  },
-  {
-    id: 6,
-    jenisPesanan: "Akun Disney+ Hotstar",
-    harga: "Rp 10.000 / bulan",
-    deskripsi: "",
-    image: "https://placehold.co/600x400/0f1f3d/60a5fa?text=Disney%2B",
-  },
+  
 ];
 
 // ─────────────────────────────────────────────────────────────
