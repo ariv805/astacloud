@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<style>
+.blue { fill:#1f3f8f; }
+.orange { fill:#f4a000; }
+.stroke-blue {
+  fill:none;
+  stroke:#1f3f8f;
+  stroke-width:6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.title {
+  font-size:34px;
+  font-weight:700;
+  fill:#1f3f8f;
+  text-anchor:middle;
+  font-family:Arial, sans-serif;
+}
+
+.sub {
+  font-size:14px;
+  fill:#555;
+  text-anchor:middle;
+  font-family:Arial, sans-serif;
+}
+
+.z-breathe {
+  animation:breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,100% { opacity:.85; }
+  50% { opacity:1; }
+}
+</style>
+</defs>
+
+<!-- swoosh -->
+<path class="stroke-blue"
+      d="M40 110 C120 10 300 20 350 120" />
+
+<!-- laptop -->
+<g class="z-breathe">
+  <rect x="170" y="70" width="120" height="70"
+        rx="6" class="stroke-blue"/>
+  <polygon points="155,145 305,145 280,165 180,165"
+           class="blue"/>
+
+  <!-- keyboard lines -->
+  <g stroke="#ffffff" stroke-width="2">
+    <line x1="185" y1="150" x2="270" y2="150"/>
+    <line x1="190" y1="156" x2="265" y2="156"/>
+  </g>
+</g>
+
+<!-- gears -->
+<circle cx="210" cy="95" r="10" class="orange"/>
+<circle cx="235" cy="110" r="8" class="orange"/>
+<circle cx="260" cy="95" r="10" class="orange"/>
+
+<!-- wrench head -->
+<circle cx="135" cy="170" r="14" class="blue"/>
+<rect x="135" y="164" width="90" height="12"
+      class="blue"/>
+
+<!-- orange swoosh -->
+<path d="M300 165 C340 150 360 150 380 170
+         C350 180 330 190 305 180 Z"
+      class="orange"/>
+
+<!-- text -->
+<text x="210" y="230" class="title">ASTA CLOUD</text>
+<text x="210" y="255" class="sub">
+Menyediakan layanan jasa, komponen
+</text>
+<text x="210" y="272" class="sub">
+computer, dan aksesoris computer
+</text>
+
+</svg>
