@@ -31,6 +31,13 @@ const galleryItems = [
     deskripsi: "Terima kasih sudah membeli di ASTA CLOUD🔥| Mouse pad bermotif karakter cocok untuk bahan set up pc/laptop kalian,mousepad nya juga tebel dan tidak gampang sobek",
     image: "https://www.image2url.com/r2/default/images/1778149597390-60104f00-3b33-4912-9a49-94e357733143.jpg",
   },
+  {
+    id: 4,
+    jenisPesanan: "Temperglase Hp",
+    harga: "Rp 15.000",
+    deskripsi: "Terima kasih sudah membeli di ASTA CLOUD🔥| Temperglase Premium Hp Redmi 14C ",
+    image: "https://www.image2url.com/r2/default/images/1778160215735-266b819d-9138-4c69-ab70-139025c9497d.jpeg",
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────
