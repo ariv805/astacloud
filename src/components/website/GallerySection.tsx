@@ -17,6 +17,13 @@ const galleryItems = [
     deskripsi: "Jasa Ganti dan pasang temperglase By ASTA CLOUD",
     image: "https://www.image2url.com/r2/default/images/1778067553109-5e2ef51f-6048-4cae-aa07-3cfcf6152f74.jpeg",
   },
+  {
+    id: 2,
+    jenisPesanan: "Casing Hp",
+    harga: "Rp 20.000",
+    deskripsi: "Casing Hp Infinix Premium Tidak gampang lecet/rusak",
+    image: "https://www.image2url.com/r2/default/images/1778117482013-d38147f5-4baa-4a07-996c-ffdede2e640a.jpg",
+  },
   
 ];
 
