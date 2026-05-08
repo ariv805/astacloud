@@ -25,12 +25,12 @@ const features = [
   },
   {
     icon: Globe,
-    title: "Galeri Pengerjaan",
+    title: "Galeri Testimoni",
     description:
-      "Kumpulan karya dan proyek yang telah kami kerjakan untuk klien kami",
+      "Kumpulan Foto Produk yang sudah di beli klien Di ASTA CLOUD",
     gradient: "from-orange-500 via-red-500 to-pink-500",
     link: "/galeri",
-    stats: "8+ Proyek",
+    stats: "5+ Testi",
   },
 ];
 
