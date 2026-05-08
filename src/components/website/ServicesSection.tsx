@@ -31,17 +31,18 @@ const services = [
     tags: ["Video", "Content", "Editing"],
   },
   {
-    id: 3,
-    name: "Pasang Tempered Glass",
-    price: "Rp 5.000",
-    discount: 0,
-    icon: "📱",
-    description: "Pemasangan tempered glass profesional dan rapi",
-    image:
-      "https://image2url.com/r2/default/images/1769765707384-639f04b4-922e-4467-8427-35b75911d7c3.jpg",
-    gradient: "from-emerald-500 to-teal-600",
-    tags: ["HP", "Screen", "Protector"],
-  },
+  id: 3,
+  name: "Jasa Buat Website",
+  price: "Rp 50.000 - 500.000",
+  discount: 0,
+  icon: "💻",
+  description:
+    "Pembuatan website modern, responsif, dan profesional untuk bisnis, portofolio, maupun website untuk game",
+  image:
+    "https://www.image2url.com/r2/default/images/1778203949587-d208bd96-4881-4f8c-ba93-02da3ceb6ec5.png",
+  gradient: "from-blue-500 to-cyan-600",
+  tags: ["Website", "Responsive", "SEO"],
+}, 
   {
     id: 4,
     name: "Jasa Reset HP",
@@ -67,6 +68,18 @@ const services = [
     gradient: "from-cyan-500 to-blue-600",
     tags: ["Service", "Garansi", "Profesional"],
   },
+ {
+    id: 6,
+    name: "Pasang Tempered Glass",
+    price: "Rp 5.000",
+    discount: 0,
+    icon: "📱",
+    description: "Pemasangan tempered glass profesional dan rapi",
+    image:
+      "https://image2url.com/r2/default/images/1769765707384-639f04b4-922e-4467-8427-35b75911d7c3.jpg",
+    gradient: "from-emerald-500 to-teal-600",
+    tags: ["HP", "Screen", "Protector"],
+  }, 
 ];
 
 const containerVariants = {
