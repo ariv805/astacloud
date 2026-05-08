@@ -38,6 +38,13 @@ const galleryItems = [
     deskripsi: "Terima kasih sudah membeli di ASTA CLOUD🔥| Temperglase Premium Hp Redmi 14C ",
     image: "https://www.image2url.com/r2/default/images/1778160215735-266b819d-9138-4c69-ab70-139025c9497d.jpeg",
   },
+  {
+    id: 5,
+    jenisPesanan: "Temperglase Hp",
+    harga: "Rp 15.000",
+    deskripsi: "Terima kasih sudah membeli di ASTA CLOUD🔥| Temperglase Premium Hp Redmi A3 ",
+    image: "https://www.image2url.com/r2/default/images/1778202517970-e3336f2b-1daa-45fc-8e71-73029ec6f172.jpg",
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────
