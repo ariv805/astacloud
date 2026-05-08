@@ -40,10 +40,10 @@ export default function GaleriPage() {
               Portofolio Kami
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Galeri <span className="gradient-text">Pengerjaan</span>
+              Galeri <span className="gradient-text">Testimoni</span>
             </h1>
             <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-              Kumpulan proyek dan karya yang telah kami kerjakan untuk klien kami
+              Kumpulan Foto Produk yang sudah di beli klien Di ASTA CLOUD 
             </p>
           </motion.div>
         </div>
